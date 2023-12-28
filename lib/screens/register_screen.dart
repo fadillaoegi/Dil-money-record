@@ -1,5 +1,7 @@
 import 'package:dilrecord_money/helpers/asset_localate.dart';
 import 'package:dilrecord_money/themes/colors.dart';
+import 'package:dilrecord_money/widgets/button_widget.dart';
+import 'package:dilrecord_money/widgets/form_widget.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -7,6 +9,9 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController(text: "");
+    TextEditingController passController = TextEditingController(text: "");
+    TextEditingController nameController = TextEditingController(text: "");
     return Scaffold(
       backgroundColor: ColorApps.primary2,
       body: Container(
@@ -21,26 +26,25 @@ class RegisterScreen extends StatelessWidget {
             const SizedBox(
               height: 82.0,
             ),
-            TextFormField(
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(28.0))),
-                  hintText: "example@gmail.com",
-                  fillColor: Colors.white),
+            FormWidget(
+              hint: "Name",
+              controller: nameController,
+            ),
+            FormWidget(
+              hint: "email: example@gmail.com",
+              controller: emailController,
+            ),
+            FormWidget(
+              hint: "password",
+              controller: passController,
+              obscure: true,
             ),
             const SizedBox(
               height: 20.0,
             ),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorApps.primary),
-                onPressed: () {},
-                child: const Text(
-                  "Submit",
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w500),
-                ))
+            ButtonWidget(
+              text: "Register",
+            )
           ],
         ),
       ),
