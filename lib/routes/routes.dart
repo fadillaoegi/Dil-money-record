@@ -1,5 +1,6 @@
 class RouteScreen {
   static String root = "/DilRecordMoney";
+  static String splash = "$root/splash";
   static String register = "$root/register";
   static String login = "$root/login";
   static String detail = "$root/detail";
