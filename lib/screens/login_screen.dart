@@ -1,8 +1,11 @@
 import 'package:dilrecord_money/helpers/asset_localate.dart';
+import 'package:dilrecord_money/routes/routes.dart';
 import 'package:dilrecord_money/themes/colors.dart';
+import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:dilrecord_money/widgets/button_widget.dart';
 import 'package:dilrecord_money/widgets/form_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -39,7 +42,24 @@ class LoginScreen extends StatelessWidget {
             ),
             ButtonWidget(
               text: "Register",
-            )
+              onPress: () {},
+            ),
+            Row(
+              children: [
+                Text(
+                  "Sudah punya akun? ",
+                  style: white700.copyWith(fontSize: 18.0),
+                ),
+                TextButton(
+                    onPressed: () {
+                      Get.offAndToNamed(RouteScreen.register);
+                    },
+                    child: Text(
+                      "Login",
+                      style: primary700.copyWith(fontSize: 18.0),
+                    ))
+              ],
+            ),
           ],
         ),
       ),

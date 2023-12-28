@@ -10,6 +10,14 @@ TextStyle black600 =
 TextStyle black700 =
     GoogleFonts.roboto(color: Colors.black, fontWeight: FontWeight.w700);
 
+// FONTS WHITE
+TextStyle white700 =
+    GoogleFonts.roboto(color: Colors.white, fontWeight: FontWeight.w700);
+
+// FONTS PRIMARY
+TextStyle primary700 =
+    GoogleFonts.roboto(color: ColorApps.primary, fontWeight: FontWeight.w700);
+
 // FONT SECONDARY2
 TextStyle secondary2400 = GoogleFonts.roboto(
     color: ColorApps.secondary2, fontWeight: FontWeight.w400);
