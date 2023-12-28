@@ -17,50 +17,56 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorApps.primary2,
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20.0),
+        margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 100.0),
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("${AssetLocal.assets}/logo.png"),
-            const SizedBox(
-              height: 82.0,
-            ),
-            FormWidget(
-              hint: "email: example@gmail.com",
-              controller: emailController,
-            ),
-            FormWidget(
-              hint: "password",
-              controller: passController,
-              obscure: true,
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            ButtonWidget(
-              text: "Register",
-              onPress: () {},
-            ),
-            Row(
-              children: [
-                Text(
-                  "Sudah punya akun? ",
-                  style: white700.copyWith(fontSize: 18.0),
-                ),
-                TextButton(
-                    onPressed: () {
-                      Get.offAndToNamed(RouteScreen.register);
-                    },
-                    child: Text(
-                      "Login",
-                      style: primary700.copyWith(fontSize: 18.0),
-                    ))
-              ],
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("${AssetLocal.assets}/logo.png"),
+              const SizedBox(
+                height: 82.0,
+              ),
+              FormWidget(
+                hint: "email: example@gmail.com",
+                controller: emailController,
+              ),
+              FormWidget(
+                hint: "password",
+                controller: passController,
+                obscure: true,
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              ButtonWidget(
+                text: "Register",
+                onPress: () {},
+              ),
+              const SizedBox(
+                height: 40.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Sudah punya akun? ",
+                    style: white700.copyWith(fontSize: 18.0),
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        Get.offAndToNamed(RouteScreen.register);
+                      },
+                      child: Text(
+                        "Login",
+                        style: primary700.copyWith(fontSize: 18.0),
+                      ))
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
