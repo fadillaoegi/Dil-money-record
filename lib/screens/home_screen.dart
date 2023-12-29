@@ -1,5 +1,8 @@
+import 'package:dilrecord_money/helpers/asset_localate.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
+import 'package:dilrecord_money/widgets/burger_button_widget.dart';
+import 'package:dilrecord_money/widgets/card_pengeluaran_widget.dart';
 import 'package:dilrecord_money/widgets/section_title_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
         margin: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 30.0),
+        padding: const EdgeInsets.only(top: 20.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,43 +30,60 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // IMAGE
-                  Material(child: Image.asset("")),
+                  Row(
+                    children: [
+                      // IMAGE
+                      SizedBox(
+                          height: 50.0,
+                          width: 50.0,
+                          child: Image.asset("${AssetLocal.assets}/logo.png")),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
 
-                  // GREETING
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [Text("Hi,\t Nabila")],
+                      // GREETING
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Hi,",
+                            style: black600.copyWith(fontSize: 18.0),
+                          ),
+                          Text(
+                            "Nabila",
+                            style: black600.copyWith(fontSize: 18.0),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
 
                   // BUTTON BURGER
+                  BurgerButton(
+                    onPress: () {},
+                  )
                 ],
+              ),
+
+              const SizedBox(
+                height: 32.0,
               ),
               // CARD PENGELUARAN
               SectionTitle(title: "Pengeluaran Hari Ini"),
-              Container(
-                height: 167.0,
-                width: double.infinity,
-                margin: const EdgeInsets.only(top: 12.0, bottom: 32.0),
-                decoration: BoxDecoration(color: ColorApps.primary),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 24.0, horizontal: 22.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Rp 500.000,00",
-                        style: secondary2700.copyWith(fontSize: 30.0),
-                      ),
-                      Text(
-                        "+20% dibanding kemarin",
-                        style: secondary2400.copyWith(fontSize: 14.0),
-                      )
-                    ],
-                  ),
-                ),
+              CardPengeluaran(
+                pengeluaran: "500000",
               ),
+
+              Divider(
+                color: ColorApps.primary,
+                thickness: 7.0,
+                endIndent: 140.0,
+                indent: 140.0,
+              ),
+              const SizedBox(
+                height: 24.0,
+              ),
+
               // GRAFIK CANDLE
               SectionTitle(title: "Pengeluaran Minggu Ini"),
               // GRAFIK LINGKARAN
@@ -74,6 +95,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-// ignore: must_be_immutable
-

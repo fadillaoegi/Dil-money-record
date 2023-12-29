@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: RouteScreen.splash,
+      initialRoute: RouteScreen.home,
       getPages: [
         GetPage(name: RouteScreen.splash, page: () => const SplashScreen()),
         GetPage(name: RouteScreen.home, page: () => const HomeScreen()),
