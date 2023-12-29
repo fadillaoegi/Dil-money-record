@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class FormWidget extends StatelessWidget {
-  FormWidget({super.key, this.obscure = false, this.hint, this.controller});
-
+  FormWidget({
+    super.key,
+    this.obscure = false,
+    this.hint,
+    this.controller,
+  });
   TextEditingController? controller;
   String? hint;
   bool? obscure;
