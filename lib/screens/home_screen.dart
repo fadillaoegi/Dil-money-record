@@ -1,4 +1,4 @@
-import 'package:dilrecord_money/helpers/asset_localate.dart';
+import 'package:dilrecord_money/config/asset_localate.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:dilrecord_money/widgets/burger_button_widget.dart';
@@ -36,7 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                           height: 50.0,
                           width: 50.0,
-                          child: Image.asset("${AssetLocal.assets}/logo.png")),
+                          // ignore: unnecessary_string_interpolations
+                          child: Image.asset("${AssetLocal.logo}")),
                       const SizedBox(
                         width: 10.0,
                       ),

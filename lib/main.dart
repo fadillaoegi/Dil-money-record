@@ -3,6 +3,7 @@ import 'package:dilrecord_money/screens/home_screen.dart';
 import 'package:dilrecord_money/screens/login_screen.dart';
 import 'package:dilrecord_money/screens/register_screen.dart';
 import 'package:dilrecord_money/screens/splash_screen.dart';
+import 'package:dilrecord_money/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,15 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: RouteScreen.home,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.light().copyWith(
+        primaryColor: ColorApps.primary,
+        colorScheme: const ColorScheme.light().copyWith(
+            primary: ColorApps.primary, secondary: ColorApps.primary2),
+        appBarTheme: AppBarTheme(
+            backgroundColor: ColorApps.primary, foregroundColor: Colors.white),
+      ),
+      initialRoute: RouteScreen.login,
       getPages: [
         GetPage(name: RouteScreen.splash, page: () => const SplashScreen()),
         GetPage(name: RouteScreen.home, page: () => const HomeScreen()),

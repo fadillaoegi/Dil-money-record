@@ -1,4 +1,4 @@
-import 'package:dilrecord_money/helpers/asset_localate.dart';
+import 'package:dilrecord_money/config/asset_localate.dart';
 import 'package:dilrecord_money/routes/routes.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
@@ -25,7 +25,8 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("${AssetLocal.assets}/logo.png"),
+              // ignore: unnecessary_string_interpolations
+              Image.asset("${AssetLocal.logo}"),
               const SizedBox(
                 height: 82.0,
               ),

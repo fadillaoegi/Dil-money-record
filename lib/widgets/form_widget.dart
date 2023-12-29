@@ -30,7 +30,7 @@ class FormWidget extends StatelessWidget {
               borderSide: BorderSide(color: ColorApps.primary, width: 1.0),
               borderRadius: const BorderRadius.all(Radius.circular(28.0))),
           hintText: hint,
-          hintStyle: const TextStyle(color: Color.fromARGB(186, 255, 255, 255)),
+          hintStyle: const TextStyle(color: Color.fromARGB(156, 255, 255, 255)),
         ),
       ),
     );
