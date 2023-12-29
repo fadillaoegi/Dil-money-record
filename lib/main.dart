@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
             backgroundColor: ColorApps.primary, foregroundColor: Colors.white),
       ),
-      initialRoute: RouteScreen.login,
+      initialRoute: RouteScreen.home,
       getPages: [
         GetPage(name: RouteScreen.splash, page: () => const SplashScreen()),
         GetPage(name: RouteScreen.home, page: () => const HomeScreen()),
