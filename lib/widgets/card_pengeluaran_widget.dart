@@ -15,6 +15,14 @@ class CardPengeluaran extends StatelessWidget {
       width: double.infinity,
       margin: const EdgeInsets.only(top: 12.0, bottom: 32.0),
       decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: const Offset(0, 3),
+            )
+          ],
           color: ColorApps.primary,
           borderRadius: const BorderRadius.all(Radius.circular(20.0))),
       child: Padding(
