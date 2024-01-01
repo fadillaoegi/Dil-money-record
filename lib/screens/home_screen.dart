@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 50.0,
                           width: 50.0,
                           // ignore: unnecessary_string_interpolations
-                          child: Image.asset("${AssetLocal.logo}")),
+                          child: Image.asset("${Assets.logo}")),
                       const SizedBox(
                         width: 10.0,
                       ),

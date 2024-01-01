@@ -27,7 +27,7 @@ class RegisterScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // ignore: unnecessary_string_interpolations
-              Image.asset("${AssetLocal.logo}"),
+              Image.asset("${Assets.logo}"),
               const SizedBox(
                 height: 82.0,
               ),

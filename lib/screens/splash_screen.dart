@@ -27,7 +27,7 @@ class SplashScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // ignore: unnecessary_string_interpolations
-              Image.asset("${AssetLocal.logo}"),
+              Image.asset("${Assets.logo}"),
               Text(
                 "Dil-Record Money",
                 style: secondary2700.copyWith(fontSize: 20.0),

@@ -39,7 +39,10 @@ dependencies:
   shared_preferences: ^2.2.2
   d_method: ^0.2.3
   http: ^1.1.2
-  intl: ^0.19.0
+  intl: ^0.17.0
+  d_chart: ^0.0.4
+  d_info: ^0.2.0
+  d_view: ^0.0.5
 
 dev_dependencies:
   flutter_test:
@@ -50,7 +53,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

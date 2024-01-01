@@ -22,7 +22,7 @@ class DrawerWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    AssetLocal.logo,
+                    Assets.logo,
                     height: 40.0,
                     width: 40.0,
                   ),
