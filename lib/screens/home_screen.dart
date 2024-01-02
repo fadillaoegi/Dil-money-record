@@ -2,7 +2,6 @@ import 'package:dilrecord_money/config/asset_localate.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:dilrecord_money/widgets/burger_button_widget.dart';
-import 'package:dilrecord_money/widgets/card_income_outcome_widget.dart';
 import 'package:dilrecord_money/widgets/card_pengeluaran_widget.dart';
 import 'package:dilrecord_money/widgets/drawer_widget.dart';
 import 'package:dilrecord_money/widgets/section_title_widget.dart';
