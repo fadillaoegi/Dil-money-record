@@ -75,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 32.0,
               ),
+              
               // CARD PENGELUARAN
               SectionTitle(title: "Pengeluaran Hari Ini"),
               CardPengeluaran(
@@ -93,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               // GRAFIK CANDLE
               SectionTitle(title: "Pengeluaran Minggu Ini"),
+
               // GRAFIK LINGKARAN
               SectionTitle(title: "Perbandingan Bulan Ini"),
             ],
