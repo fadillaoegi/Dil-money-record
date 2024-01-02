@@ -11,15 +11,15 @@ class CardInOutCome extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       decoration: BoxDecoration(
+          color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3),
             )
           ],
-          color: Colors.amber,
           borderRadius: const BorderRadius.all(Radius.circular(12.0))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
