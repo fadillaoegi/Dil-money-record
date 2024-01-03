@@ -1,6 +1,8 @@
+import 'package:dilrecord_money/routes/routes.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class CardPengeluaran extends StatelessWidget {
@@ -43,28 +45,33 @@ class CardPengeluaran extends StatelessWidget {
                 )
               ],
             ),
-            Container(
-                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                alignment: Alignment.centerLeft,
-                height: 30.0,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "See Detail",
-                      style: primary700,
-                    ),
-                    const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 20.0,
-                    )
-                  ],
-                ))
+            InkWell(
+              onTap: () {
+                Get.toNamed(RouteScreen.detail);
+              },
+              child: Container(
+                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                  alignment: Alignment.centerLeft,
+                  height: 30.0,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "See Detail",
+                        style: primary700,
+                      ),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 20.0,
+                      )
+                    ],
+                  )),
+            )
           ],
         ),
       ),
