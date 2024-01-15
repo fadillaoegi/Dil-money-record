@@ -20,7 +20,7 @@ class MainApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
             backgroundColor: ColorApps.primary, foregroundColor: Colors.white),
       ),
-      initialRoute: RouteScreen.history,
+      initialRoute: RouteScreen.detail,
       getPages: getScreens,
     );
   }

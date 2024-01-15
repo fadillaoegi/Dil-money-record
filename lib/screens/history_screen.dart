@@ -7,7 +7,7 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("History")),
+      appBar: AppBar(title: const Text("History")),
       body: Container(
         margin: const EdgeInsets.all(20.0),
         child: const SingleChildScrollView(
