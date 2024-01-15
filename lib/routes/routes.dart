@@ -3,7 +3,8 @@ class RouteScreen {
   static String splash = "$root/splash";
   static String register = "$root/register";
   static String login = "$root/login";
+  static String home = "$root/home";
   static String detail = "$root/detail";
   static String add = "$root/add";
-  static String home = "$root/home";
+  static String history = "$root/history";
 }
