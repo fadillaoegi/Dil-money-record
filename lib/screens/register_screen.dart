@@ -58,7 +58,7 @@ class RegisterScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Belum punya akun? ",
+                    "Sudah punya akun? ",
                     style: white700.copyWith(fontSize: 18.0),
                   ),
                   TextButton(
@@ -66,7 +66,7 @@ class RegisterScreen extends StatelessWidget {
                         Get.offAndToNamed(RouteScreen.login);
                       },
                       child: Text(
-                        "Register",
+                        "Login",
                         style: primary700.copyWith(fontSize: 18.0),
                       ))
                 ],

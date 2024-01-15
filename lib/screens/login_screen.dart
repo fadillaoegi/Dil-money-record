@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                 height: 20.0,
               ),
               ButtonWidget(
-                text: "Register",
+                text: "Login",
                 onPress: () {},
               ),
               const SizedBox(
@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Sudah punya akun? ",
+                    "Belum punya akun? ",
                     style: white700.copyWith(fontSize: 18.0),
                   ),
                   TextButton(
@@ -61,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                         Get.offAndToNamed(RouteScreen.register);
                       },
                       child: Text(
-                        "Login",
+                        "Register",
                         style: primary700.copyWith(fontSize: 18.0),
                       ))
                 ],
