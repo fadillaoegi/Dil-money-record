@@ -1,22 +1,26 @@
 import 'dart:convert';
+import 'package:dilrecord_money/controllers/user_controller.dart';
 import 'package:dilrecord_money/models/user.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SessionUser {
-
+  static const userKey = "userKey";
 // MENYIMPAN USER LOGIN?REGISTER
   static Future<bool> saveUser(User user) async {
-    const userKey = "userKey";
     final prefs = await SharedPreferences.getInstance();
     Map<String, dynamic> mapUser = user.toJson();
     String stringUser = jsonEncode(mapUser);
     bool success = await prefs.setString(userKey, stringUser);
+    if (success) {
+      final controllUser = Get.put(UserController());
+      controllUser.setData(user);
+    }
     return success;
   }
 
 // MENAMBAH USER
   static Future<User> getUser() async {
-    const userKey = "userKey";
     final prefs = await SharedPreferences.getInstance();
     User user = User();
     String? stringUser = prefs.get(userKey) as String?;
@@ -24,13 +28,16 @@ class SessionUser {
       Map<String, dynamic> mapUser = jsonDecode(stringUser);
       user = User.fromJson(mapUser);
     }
+    final controllUser = Get.put(UserController());
+    controllUser.setData(user);
     return user;
   }
 
-  static Future<bool> clearUser(User user) async {
-    const userKey = "userKey";
+  static Future<bool> clearUser() async {
     final prefs = await SharedPreferences.getInstance();
     bool success = await prefs.remove(userKey);
+    final controllUser = Get.put(UserController());
+    controllUser.setData(User());
     // Map<String, dynamic> mapUser = user.toJson();
     // String stringUser = jsonEncode(mapUser);
     return success;

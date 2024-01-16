@@ -1,10 +1,15 @@
 import 'package:dilrecord_money/config/route_config.dart';
-import 'package:dilrecord_money/routes/routes.dart';
+import 'package:dilrecord_money/config/session.dart';
+import 'package:dilrecord_money/models/user.dart';
+import 'package:dilrecord_money/screens/home_screen.dart';
+import 'package:dilrecord_money/screens/login_screen.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() => runApp(const MainApp());
+void main() {
+  runApp(const MainApp());
+}
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -20,7 +25,22 @@ class MainApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
             backgroundColor: ColorApps.primary, foregroundColor: Colors.white),
       ),
-      initialRoute: RouteScreen.detail,
+      home: FutureBuilder(
+        future: SessionUser.getUser(),
+        builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            if (snapshot.data != null) {
+              return const HomeScreen();
+            } else {
+              return const LoginScreen();
+            }
+          }
+        },
+      ),
       getPages: getScreens,
     );
   }

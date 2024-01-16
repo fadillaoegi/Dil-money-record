@@ -1,8 +1,10 @@
 import 'package:dilrecord_money/config/assets_localate.dart';
+import 'package:dilrecord_money/routes/routes.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:dilrecord_money/widgets/menu_drawer_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -65,7 +67,9 @@ class DrawerWidget extends StatelessWidget {
                 const Divider(),
                 MenuDrawer(
                   text: "Tambah Baru",
-                  onPress: () {},
+                  onPress: () {
+                    Get.toNamed(RouteScreen.add);
+                  },
                   prefix: Icons.plus_one,
                 ),
                 const Divider(

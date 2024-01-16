@@ -1,14 +1,14 @@
 // To parse this JSON data, do
 //
-//     final user = userFromJson(jsonString);
+//     final history = historyFromJson(jsonString);
 
 import 'dart:convert';
 
-User userFromJson(String str) => User.fromJson(json.decode(str));
+History historyFromJson(String str) => History.fromJson(json.decode(str));
 
-String userToJson(User data) => json.encode(data.toJson());
+String historyToJson(History data) => json.encode(data.toJson());
 
-class User {
+class History {
   String? id;
   String? idUser;
   String? type;
@@ -18,7 +18,7 @@ class User {
   String? createdAt;
   String? updatedAt;
 
-  User({
+  History({
     this.id,
     this.idUser,
     this.type,
@@ -29,25 +29,25 @@ class User {
     this.updatedAt,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory History.fromJson(Map<String, dynamic> json) => History(
         id: json["id"],
-        idUser: json["id_user"],
+        idUser: json["idUser"],
         type: json["type"],
         date: json["date"],
         total: json["total"],
         detail: json["detail"],
-        createdAt: json["created_at"],
-        updatedAt: json["updated_at"],
+        createdAt: json["createdAt"],
+        updatedAt: json["updatedAt"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "id_user": idUser,
+        "idUser": idUser,
         "type": type,
         "date": date,
         "total": total,
         "detail": detail,
-        "created_at": createdAt,
-        "updated_at": updatedAt,
+        "createdAt": createdAt,
+        "updatedAt": updatedAt,
       };
 }
