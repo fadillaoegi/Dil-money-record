@@ -5,6 +5,11 @@ class IncomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Container(height:MediaQuery.sizeOf(context).height, width:MediaQuery.sizeOf(context).width,),);
+    return Scaffold(
+      body: SizedBox(
+        height: MediaQuery.sizeOf(context).height,
+        width: MediaQuery.sizeOf(context).width,
+      ),
+    );
   }
 }
