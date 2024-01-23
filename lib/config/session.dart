@@ -33,6 +33,7 @@ class SessionUser {
     return user;
   }
 
+// CLEAR USER (Logout)
   static Future<bool> clearUser() async {
     final prefs = await SharedPreferences.getInstance();
     bool success = await prefs.remove(userKey);
