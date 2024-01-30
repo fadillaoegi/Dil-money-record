@@ -9,7 +9,7 @@ class SessionUser {
 // MENYIMPAN USER LOGIN?REGISTER
   static Future<bool> saveUser(User user) async {
     final prefs = await SharedPreferences.getInstance();
-    Map<String, dynamic> mapUser = user.toJson();
+    Map<String, dynamic>? mapUser = user.toJson();
     String stringUser = jsonEncode(mapUser);
     bool success = await prefs.setString(userKey, stringUser);
     if (success) {
