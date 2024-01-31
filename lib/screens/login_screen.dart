@@ -101,8 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     TextButton(
                         onPressed: () {
-                          login();
-                          // Get.offAndToNamed(RouteScreen.register);
+                          Get.offAndToNamed(RouteScreen.register);
                         },
                         child: Text(
                           "Register",

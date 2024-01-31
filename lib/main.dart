@@ -39,17 +39,6 @@ class MainApp extends StatelessWidget {
           } else {
             return const LoginScreen();
           }
-          // if (snapshot.connectionState == ConnectionState.waiting) {
-          //   return const Center(
-          //     child: CircularProgressIndicator(),
-          //   );
-          // } else {
-          //   if (snapshot.data != null) {
-          //     return const HomeScreen();
-          //   } else {
-          //     return const LoginScreen();
-          //   }
-          // }
         },
       ),
       getPages: getScreens,
