@@ -1,4 +1,5 @@
 import 'package:dilrecord_money/config/assets_localate.dart';
+import 'package:dilrecord_money/config/session.dart';
 import 'package:dilrecord_money/routes/routes.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
@@ -49,7 +50,9 @@ class DrawerWidget extends StatelessWidget {
             ),
 
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  SessionUser.clearUser();
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: ColorApps.primary),
                 child: Text(

@@ -20,7 +20,7 @@ class SessionUser {
   }
 
 // MENAMBAH USER
-  static Future<User> getUser() async {
+  static Future<User?> getUser() async {
     final prefs = await SharedPreferences.getInstance();
     User user = User();
     String? stringUser = prefs.get(userKey) as String?;

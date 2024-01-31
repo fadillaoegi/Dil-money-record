@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations, unnecessary_brace_in_string_interps, avoid_print
+
 import 'package:dilrecord_money/config/assets_localate.dart';
 import 'package:dilrecord_money/routes/routes.dart';
 import 'package:dilrecord_money/themes/colors.dart';
@@ -7,14 +9,40 @@ import 'package:dilrecord_money/widgets/form_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
   @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController(text: "");
-    TextEditingController passController = TextEditingController(text: "");
-    TextEditingController nameController = TextEditingController(text: "");
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passController = TextEditingController();
+    final TextEditingController nameController = TextEditingController();
+    final formKey = GlobalKey<FormState>();
+    void register() {
+      try {
+        final String email = emailController.text;
+        final String name = nameController.text;
+        final String password = passController.text;
+        String warning = "Pemberitahuan";
+        if (email.isNotEmpty && name.isNotEmpty && password.isNotEmpty) {
+          if (formKey.currentState!.validate()) {}
+        } else if (email.isEmpty) {
+          Get.snackbar("${warning}", "Tolong isi Email");
+        } else if (name.isEmpty) {
+          Get.snackbar("${warning}", "Tolong isi Nama");
+        } else if (password.isEmpty) {
+          Get.snackbar("${warning}", "Tolong isi password");
+        }
+      } catch (e) {
+        print(e);
+      }
+    }
+
     return Scaffold(
       backgroundColor: ColorApps.primary2,
       body: Container(
@@ -26,7 +54,6 @@ class RegisterScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // ignore: unnecessary_string_interpolations
               Image.asset("${Assets.logo}"),
               const SizedBox(
                 height: 82.0,
@@ -49,7 +76,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               ButtonWidget(
                 text: "Register",
-                onPress: () {},
+                onPress: () => register(),
               ),
               const SizedBox(
                 height: 40.0,

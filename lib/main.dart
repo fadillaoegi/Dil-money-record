@@ -34,17 +34,22 @@ class MainApp extends StatelessWidget {
       home: FutureBuilder(
         future: SessionUser.getUser(),
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+          if (snapshot.data != null && snapshot.data!.id != null) {
+            return const HomeScreen();
           } else {
-            if (snapshot.data != null) {
-              return const HomeScreen();
-            } else {
-              return const LoginScreen();
-            }
+            return const LoginScreen();
           }
+          // if (snapshot.connectionState == ConnectionState.waiting) {
+          //   return const Center(
+          //     child: CircularProgressIndicator(),
+          //   );
+          // } else {
+          //   if (snapshot.data != null) {
+          //     return const HomeScreen();
+          //   } else {
+          //     return const LoginScreen();
+          //   }
+          // }
         },
       ),
       getPages: getScreens,

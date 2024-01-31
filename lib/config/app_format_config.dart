@@ -10,3 +10,4 @@ class AppFormat {
         .format(dateTime); // Hasil => 25 Feb 2024
   }
 }
+  
