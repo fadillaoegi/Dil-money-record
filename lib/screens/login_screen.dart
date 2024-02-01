@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Get.snackbar("$warning", "passowrd tidak boleh ksosong");
         }
       } catch (e) {
-        print(e);
+        print("catch from login screen $e");
       }
     }
 

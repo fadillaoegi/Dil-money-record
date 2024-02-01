@@ -52,6 +52,7 @@ class DrawerWidget extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   SessionUser.clearUser();
+                  Get.offAllNamed(RouteScreen.login);
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: ColorApps.primary),

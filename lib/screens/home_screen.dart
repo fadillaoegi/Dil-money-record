@@ -94,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               // GRAFIK CANDLE
               SectionTitle(title: "Pengeluaran Minggu Ini"),
+              // AspectRatio(aspectRatio: 16 / 9, child: DChartBar()),
 
               // GRAFIK LINGKARAN
               SectionTitle(title: "Perbandingan Bulan Ini"),

@@ -43,7 +43,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
             } else {
               Get.snackbar("Login", "Gagal");
               DInfo.dialogSuccess(context, "Login Gagal");
-
             }
           }
         } else if (email.isEmpty) {

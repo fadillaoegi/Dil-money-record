@@ -10,11 +10,6 @@ import 'package:get/get.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
-
-  // initializeDateFormatting("id_ID", "path/to/custom/date_format_file")
-  //     .then((value) {
-  //   runApp(const MainApp());
-  // });
 }
 
 class MainApp extends StatelessWidget {
