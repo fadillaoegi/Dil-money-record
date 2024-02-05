@@ -1,3 +1,4 @@
+import 'package:d_chart/d_chart.dart';
 import 'package:dilrecord_money/config/assets_localate.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
@@ -94,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               // GRAFIK CANDLE
               SectionTitle(title: "Pengeluaran Minggu Ini"),
-              // AspectRatio(aspectRatio: 16 / 9, child: DChartBar()),
+              // DChartBar(barColor: barColor, data: data),
 
               // GRAFIK LINGKARAN
               SectionTitle(title: "Perbandingan Bulan Ini"),

@@ -17,6 +17,7 @@ class UserSource {
 
     if (responseLogin["success"]) {
       var mapUser = responseLogin["data"];
+      print("data dari userSource $mapUser");
       SessionUser.saveUser(User.fromJson(mapUser));
     } else {
       Get.snackbar("Login Gagal", "Email atau Password Salah");
@@ -38,8 +39,8 @@ class UserSource {
     if (responseRegister == null) return false;
 
     if (responseRegister["success"]) {
-      // var mapUser = responseLogin["data"];
-      // SessionUser.saveUser(User.fromJson(mapUser));
+      var mapUser = responseRegister["data"];
+      SessionUser.saveUser(User.fromJson(mapUser));
       // DInfo.dialogSuccess((context), "message");
       Get.snackbar("Register Berhasil", "Silahkan login");
       print("Register Berhasil Silahkan login");

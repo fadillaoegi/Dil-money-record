@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:dilrecord_money/config/route_config.dart';
 import 'package:dilrecord_money/config/session.dart';
 import 'package:dilrecord_money/models/user.dart';
@@ -30,6 +32,7 @@ class MainApp extends StatelessWidget {
         future: SessionUser.getUser(),
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
           if (snapshot.data != null && snapshot.data!.id != null) {
+            print("masuk disini aja");
             return const HomeScreen();
           } else {
             return const LoginScreen();

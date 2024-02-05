@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:d_method/d_method.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class AppRequest {
@@ -33,7 +34,8 @@ class AppRequest {
         return responseBody;
       }
     } catch (e) {
-      DMethod.printTitle('catch error: ', e.toString());
+      DMethod.printTitle('catch error post: ', e.toString());
+      Get.snackbar("Catch", "AppRequest");
       return null;
     }
   }

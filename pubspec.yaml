@@ -40,7 +40,7 @@ dependencies:
   d_method: ^0.2.4
   http: ^1.1.2
   intl: ^0.17.0
-  d_chart: ^0.0.4
+  d_chart: ^2.6.7
   d_info: ^0.2.0
   d_view: ^0.0.5
   flutter_launcher_icons: ^0.13.1
