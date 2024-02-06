@@ -28,7 +28,7 @@ class UserSource {
 
   static Future<bool> register(
       String name, String email, String password) async {
-    String url = ApiApps.login;
+    String url = ApiApps.register;
     Map? responseRegister = await AppRequest.posts(url, {
       "name": name,
       "email": email,

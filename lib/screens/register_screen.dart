@@ -53,7 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           Get.snackbar("${warning}", "Tolong isi password");
         }
       } catch (e) {
-        print(e);
+        print("catch from register screen: $e");
       }
     }
 
@@ -64,55 +64,58 @@ class _RegisterScreenState extends State<RegisterScreen> {
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset("${Assets.logo}"),
-              const SizedBox(
-                height: 82.0,
-              ),
-              FormWidget(
-                hint: "Name: Alberts",
-                controller: nameController,
-              ),
-              FormWidget(
-                hint: "Email: example@gmail.com",
-                controller: emailController,
-              ),
-              FormWidget(
-                hint: "Password",
-                controller: passController,
-                obscure: true,
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              ButtonWidget(
-                text: "Register",
-                onPress: () => register(),
-              ),
-              const SizedBox(
-                height: 40.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Sudah punya akun? ",
-                    style: white700.copyWith(fontSize: 18.0),
-                  ),
-                  TextButton(
-                      onPressed: () {
-                        Get.offAndToNamed(RouteScreen.login);
-                      },
-                      child: Text(
-                        "Login",
-                        style: primary700.copyWith(fontSize: 18.0),
-                      ))
-                ],
-              ),
-            ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset("${Assets.logo}"),
+                const SizedBox(
+                  height: 82.0,
+                ),
+                FormWidget(
+                  hint: "Name: Alberts",
+                  controller: nameController,
+                ),
+                FormWidget(
+                  hint: "Email: example@gmail.com",
+                  controller: emailController,
+                ),
+                FormWidget(
+                  hint: "Password",
+                  controller: passController,
+                  obscure: true,
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                ButtonWidget(
+                  text: "Register",
+                  onPress: () => register(),
+                ),
+                const SizedBox(
+                  height: 40.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Sudah punya akun? ",
+                      style: white700.copyWith(fontSize: 18.0),
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          Get.offAndToNamed(RouteScreen.login);
+                        },
+                        child: Text(
+                          "Login",
+                          style: primary700.copyWith(fontSize: 18.0),
+                        ))
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

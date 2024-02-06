@@ -1,4 +1,3 @@
-import 'package:d_chart/d_chart.dart';
 import 'package:dilrecord_money/config/assets_localate.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
