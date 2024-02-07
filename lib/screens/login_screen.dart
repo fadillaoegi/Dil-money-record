@@ -20,6 +20,11 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   @override
+  initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     final TextEditingController passController = TextEditingController();
@@ -31,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
         final String email = emailController.text;
         final String password = passController.text;
         if (email.isNotEmpty && password.isNotEmpty) {
-          // Belum ada eksekusi
+          // Belum ada eksekusi 
           if (formKey.currentState!.validate()) {
             bool success = await UserSource.login(
               email,

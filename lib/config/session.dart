@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:dilrecord_money/controllers/user_controller.dart';
 import 'package:dilrecord_money/models/user.dart';
@@ -30,6 +32,7 @@ class SessionUser {
     }
     final controllUser = Get.put(UserController());
     controllUser.setData(user);
+    // print(user);
     return user;
   }
 
