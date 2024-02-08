@@ -1,6 +1,8 @@
 class ApiApps {
   // API WIFI MnCPLay
-  static const baseUrl = "http://192.168.1.7/apis/dilrecordmoney-api";
+  // static const baseUrl = "http://192.168.1.7/apis/dilrecordmoney-api";
+  // API for MAC
+  static const baseUrl = "http://localhost/apis/dilrecordmoney-api";
 
   // API WIFI Kantor GDMAgri 5G
   // static const baseUrl = "http://190.110.0.69/apis/dilrecordmoney-api";
