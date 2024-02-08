@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
         final String email = emailController.text;
         final String password = passController.text;
         if (email.isNotEmpty && password.isNotEmpty) {
-          // Belum ada eksekusi 
+          // Belum ada eksekusi
           if (formKey.currentState!.validate()) {
             bool success = await UserSource.login(
               email,
@@ -92,7 +92,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ButtonWidget(
                   text: "Login",
-                  onPress: () => login(),
+                  // onPress: () => login(),
+                  onPress: () {
+                    Get.offAllNamed(RouteScreen.home);
+                  },
                 ),
                 const SizedBox(
                   height: 40.0,

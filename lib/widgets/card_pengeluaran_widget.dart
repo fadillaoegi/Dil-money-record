@@ -15,7 +15,8 @@ class CardPengeluaran extends StatelessWidget {
     return Container(
       height: 167.0,
       width: double.infinity,
-      margin: const EdgeInsets.only(top: 12.0, bottom: 32.0),
+      margin: const EdgeInsets.only(
+          top: 12.0, bottom: 20.0, right: 12.0, left: 12.0),
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(

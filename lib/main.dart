@@ -12,6 +12,9 @@ import 'package:get/get.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
+  // initializeDateFormatting("id_ID").then((value) {
+  //   runApp(const MainApp());
+  // });
 }
 
 class MainApp extends StatelessWidget {
@@ -32,7 +35,7 @@ class MainApp extends StatelessWidget {
         future: SessionUser.getUser(),
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
           if (snapshot.data != null && snapshot.data!.id != null) {
-            print("masuk disini aja");
+            // print("masuk disini aja");
             return const HomeScreen();
           } else {
             return const LoginScreen();
