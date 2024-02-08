@@ -1,3 +1,4 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
 import 'package:dilrecord_money/config/apis.dart';
 import 'package:dilrecord_money/config/app_request_config.dart';
 import 'package:intl/intl.dart';
@@ -11,7 +12,7 @@ class HistorySource {
     });
 
     if (responseAnalysis == null)
-      return  {
+      return {
         "today": 0,
         "yesterday": 0,
         "weeks": [0, 0, 0, 0, 0, 0, 0],
