@@ -2,7 +2,9 @@ import 'package:d_chart/commons/config_render.dart';
 import 'package:d_chart/commons/data_model.dart';
 import 'package:d_chart/ordinal/bar.dart';
 import 'package:d_chart/ordinal/pie.dart';
+import 'package:dilrecord_money/config/app_format_config.dart';
 import 'package:dilrecord_money/config/assets_localate.dart';
+import 'package:dilrecord_money/controllers/home_controller.dart';
 import 'package:dilrecord_money/controllers/user_controller.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
@@ -22,6 +24,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final UserController userController = Get.put(UserController());
+  final HomeController homeController = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     // DATA PENGELUARAN MINGGUAN
@@ -123,11 +126,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 30.0,
               ),
 
-              // CARD PENGELUARAN
               SectionTitle(title: "Pengeluaran Hari Ini"),
-              CardPengeluaran(
-                pengeluaran: "500000",
-              ),
+              // CARD PENGELUARAN DINAMIS
+              Obx(() => CardPengeluaran(
+                    // pengeluaran: "500000",
+                    pengeluaran: AppFormat.currency(
+                        homeController.todayOutCome.toString()),
+                    differentOutCome: homeController.todayPercent,
+                  )),
+
+              // CARD PENGELUARAN STATIS
+              // CardPengeluaran(
+              //   pengeluaran: "500000",
+              //   differentOutCome: "+20% dibanding kemarin",
+              // ),
 
               Divider(
                 color: ColorApps.primary,

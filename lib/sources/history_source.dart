@@ -13,12 +13,12 @@ class HistorySource {
 
     if (responseAnalysis == null)
       return {
-        "today": 0,
-        "yesterday": 0,
-        "weeks": [0, 0, 0, 0, 0, 0, 0],
+        "today": 0.0,
+        "yesterday": 0.0,
+        "weeks": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         "mount": {
-          "income": 0,
-          "outcome": 0,
+          "income": 0.0,
+          "outcome": 0.0,
         }
       };
 

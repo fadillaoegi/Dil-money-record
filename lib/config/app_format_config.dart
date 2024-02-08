@@ -9,5 +9,12 @@ class AppFormat {
     return DateFormat("dd MMM yyyy", "id_ID")
         .format(dateTime); // Hasil => 25 Feb 2024
   }
+
+  static String currency(String number) {
+    return NumberFormat.currency(
+      decimalDigits: 2,
+      locale: "id_ID",
+      symbol: "Rp. ",
+    ).format(double.parse(number));
+  }
 }
-  

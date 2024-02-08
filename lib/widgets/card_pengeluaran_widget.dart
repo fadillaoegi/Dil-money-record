@@ -6,9 +6,10 @@ import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class CardPengeluaran extends StatelessWidget {
-  CardPengeluaran({super.key, this.pengeluaran});
+  CardPengeluaran({super.key, this.pengeluaran, this.differentOutCome});
 
   String? pengeluaran;
+  String? differentOutCome;
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +38,12 @@ class CardPengeluaran extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Rp.$pengeluaran,00",
+                  "$pengeluaran",
                   style: secondary2700.copyWith(fontSize: 30.0),
                 ),
                 Text(
-                  "+20% dibanding kemarin",
+                  // "+20% dibanding kemarin",
+                  "$differentOutCome",
                   style: secondary2400.copyWith(fontSize: 14.0),
                 )
               ],

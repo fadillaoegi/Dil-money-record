@@ -9,8 +9,8 @@ class HomeController extends GetxController {
 
   getAnalysis(String idUser) async {
     Map dataAnalysis = await HistorySource.analysis(idUser);
-    _todayOutCome.value = dataAnalysis["today"];
-    double yesterday = dataAnalysis["yesterday"];
+    _todayOutCome.value = dataAnalysis["today"].toDouble();
+    double yesterday = dataAnalysis["yesterday"].toDouble();
     double different = (todayOutCome - yesterday).abs();
     bool isSame = todayOutCome.isEqual(yesterday);
     bool isPlus = todayOutCome.isGreaterThan(yesterday);
