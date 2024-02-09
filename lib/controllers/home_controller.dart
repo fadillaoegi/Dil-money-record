@@ -2,10 +2,29 @@ import 'package:dilrecord_money/sources/history_source.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+  // TODAY
   final _todayOutCome = 0.0.obs;
   double get todayOutCome => _todayOutCome.value;
   final _todayPercent = "0".obs;
   String get todayPercent => _todayPercent.value;
+
+  // WEEKS
+  final _weeks = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0].obs;
+  List<double> get weekText => _weeks.value;
+  List<String> get days =>
+      ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].obs;
+  List<String> week() {
+    DateTime today = DateTime.now();
+    return [
+      days[today.subtract(const Duration(days: 6)).weekday - 1],
+      days[today.subtract(const Duration(days: 5)).weekday - 1],
+      days[today.subtract(const Duration(days: 4)).weekday - 1],
+      days[today.subtract(const Duration(days: 3)).weekday - 1],
+      days[today.subtract(const Duration(days: 2)).weekday - 1],
+      days[today.subtract(const Duration(days: 1)).weekday - 1],
+      days[today.weekday - 1],
+    ];
+  }
 
   getAnalysis(String idUser) async {
     Map dataAnalysis = await HistorySource.analysis(idUser);
