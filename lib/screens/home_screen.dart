@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
 
     final ordinalGroup = [
-      OrdinalGroup(id: '1', data: ordinalList, color: Colors.amber),
+      OrdinalGroup(id: '1', data: ordinalList, color: Colors.pinkAccent),
     ];
 
     // DATAPENGELUARAN BULANAN
@@ -49,6 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
       OrdinalData(domain: 'Wed', measure: 9, color: Colors.purple[300]),
       OrdinalData(domain: 'Thu', measure: 6.5, color: Colors.pink[300]),
     ];
+    print(userController.data.name);
+
     return Scaffold(
       endDrawer: const DrawerWidget(),
       body: Container(

@@ -92,10 +92,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ButtonWidget(
                   text: "Login",
-                  // onPress: () => login(),
-                  onPress: () {
-                    Get.offAllNamed(RouteScreen.home);
-                  },
+                  onPress: () => login(),
+                  // onPress: () {
+                  //   Get.offAllNamed(RouteScreen.home);
+                  // },
                 ),
                 const SizedBox(
                   height: 40.0,

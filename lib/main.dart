@@ -8,13 +8,14 @@ import 'package:dilrecord_money/screens/login_screen.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MainApp());
-  // initializeDateFormatting("id_ID").then((value) {
-  //   runApp(const MainApp());
-  // });
+  // runApp(const MainApp());
+  initializeDateFormatting("id_ID").then((value) {
+    runApp(const MainApp());
+  });
 }
 
 class MainApp extends StatelessWidget {

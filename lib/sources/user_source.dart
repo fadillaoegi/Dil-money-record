@@ -39,9 +39,6 @@ class UserSource {
     if (responseRegister == null) return false;
 
     if (responseRegister["success"]) {
-      var mapUser = responseRegister["data"];
-      SessionUser.saveUser(User.fromJson(mapUser));
-      // DInfo.dialogSuccess((context), "message");
       Get.snackbar("Register Berhasil", "Silahkan login");
       print("Register Berhasil Silahkan login");
     } else {
@@ -52,6 +49,7 @@ class UserSource {
       } else {
         print("Gagal Register");
       }
+      // DInfo.closeDialog();
     }
 
     return responseRegister["success"];
