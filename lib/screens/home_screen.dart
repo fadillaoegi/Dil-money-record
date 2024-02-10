@@ -27,29 +27,37 @@ class _HomeScreenState extends State<HomeScreen> {
   final HomeController homeController = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
+    // DATAPENGELUARAN MINGGUAN DINAMIS
+    List<OrdinalData> ordinalList = List.generate(7, (index) {
+      return OrdinalData(
+        domain: homeController.weekText()[index],
+        measure: homeController.week[index],
+      );
+    });
+
     // DATA PENGELUARAN MINGGUAN
-    List<OrdinalData> ordinalList = [
-      OrdinalData(domain: 'Mon', measure: 3),
-      OrdinalData(domain: 'Tue', measure: 5),
-      OrdinalData(domain: 'Wed', measure: 9),
-      OrdinalData(domain: 'Thu', measure: 6.5),
-      OrdinalData(domain: 'Fri', measure: 6.5),
-      OrdinalData(domain: 'Satur', measure: 6.5),
-      OrdinalData(domain: 'Sun', measure: 6.5),
-    ];
+    // List<OrdinalData> ordinalList = [
+    //   OrdinalData(domain: 'Mon', measure: 3),
+    //   OrdinalData(domain: 'Tue', measure: 5),
+    //   OrdinalData(domain: 'Wed', measure: 9),
+    //   OrdinalData(domain: 'Thu', measure: 6.5),
+    //   OrdinalData(domain: 'Fri', measure: 6.5),
+    //   OrdinalData(domain: 'Satur', measure: 6.5),
+    //   OrdinalData(domain: 'Sun', measure: 6.5),
+    // ];
 
     final ordinalGroup = [
       OrdinalGroup(id: '1', data: ordinalList, color: Colors.pinkAccent),
     ];
 
-    // DATAPENGELUARAN BULANAN
+    // DATAPENGELUARAN BULANAN STATIS
     List<OrdinalData> ordinalDataListDounat = [
       OrdinalData(domain: 'Mon', measure: 3, color: Colors.blue[300]),
       OrdinalData(domain: 'Tue', measure: 5, color: Colors.amber[300]),
       OrdinalData(domain: 'Wed', measure: 9, color: Colors.purple[300]),
       OrdinalData(domain: 'Thu', measure: 6.5, color: Colors.pink[300]),
     ];
-    print(userController.data.name);
+    // print(userController.data.name);
 
     return Scaffold(
       endDrawer: const DrawerWidget(),

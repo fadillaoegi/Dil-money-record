@@ -10,10 +10,10 @@ class HomeController extends GetxController {
 
   // WEEKS
   final _weeks = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0].obs;
-  List<double> get weekText => _weeks.value;
+  List<double> get week => _weeks.value;
   List<String> get days =>
       ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].obs;
-  List<String> week() {
+  List<String> weekText() {
     DateTime today = DateTime.now();
     return [
       days[today.subtract(const Duration(days: 6)).weekday - 1],
@@ -43,5 +43,7 @@ class HomeController extends GetxController {
         : isPlus
             ? "+${percent.toStringAsFixed(1)}% dibanding kemarin"
             : "-${percent.toStringAsFixed(1)}% dibanding kemarin";
+
+    _weeks.value = (dataAnalysis["week"]).map((e) => e.toDouble()).toList();
   }
 }
