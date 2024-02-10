@@ -36,10 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             bool successRegister =
                 await UserSource.register(name, email, password);
             if (successRegister) {
-              DInfo.dialogSuccess(context, "Register Berhasil");
-              DInfo.closeDialog(context);
-              Get.snackbar("Register", "Berhasil");
-              Get.offAllNamed(RouteScreen.login);
+              Get.offNamed(RouteScreen.login);
             } else {
               // Get.snackbar("Register", "Gagal");
               DInfo.dialogSuccess(context, "Email sudah terpakai");

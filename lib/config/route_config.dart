@@ -1,5 +1,5 @@
 import 'package:dilrecord_money/routes/routes.dart';
-import 'package:dilrecord_money/screens/add_screen.dart';
+import 'package:dilrecord_money/screens/add_history_screen.dart';
 import 'package:dilrecord_money/screens/detail_screen.dart';
 import 'package:dilrecord_money/screens/history_screen.dart';
 import 'package:dilrecord_money/screens/home_screen.dart';

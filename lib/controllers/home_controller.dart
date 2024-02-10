@@ -10,6 +10,7 @@ class HomeController extends GetxController {
 
   // WEEKS
   final _weeks = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0].obs;
+  // ignore: invalid_use_of_protected_member
   List<double> get week => _weeks.value;
   List<String> get days =>
       ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].obs;
@@ -25,6 +26,8 @@ class HomeController extends GetxController {
       days[today.weekday - 1],
     ];
   }
+
+  // MOUNTHS
 
   getAnalysis(String idUser) async {
     Map dataAnalysis = await HistorySource.analysis(idUser);
