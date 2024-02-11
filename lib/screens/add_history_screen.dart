@@ -1,13 +1,19 @@
+import 'package:dilrecord_money/controllers/user_controller.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
+import 'package:dilrecord_money/widgets/button_widget.dart';
 import 'package:dilrecord_money/widgets/section_title_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AddScreen extends StatelessWidget {
   const AddScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    UserController userController = Get.put(UserController());
+
+    print(userController.data.id);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Tambah Baru"),
@@ -48,14 +54,15 @@ class AddScreen extends StatelessWidget {
                         icon: const Icon(Icons.date_range)),
                   ],
                 ),
-                // NOTE: SUMBER
+                // NOTE: TYPE
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: SectionTitle(
                     title: "Tipe",
                   ),
                 ),
-                // NOTE: TANGGAL
+                // Drop
+                // NOTE: SUMBER
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: SectionTitle(
@@ -79,6 +86,14 @@ class AddScreen extends StatelessWidget {
                       hintText: "3000000",
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: ColorApps.primary))),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: ButtonWidget(
+                    onPress: () {},
+                    text: "Add item",
+                  ),
                 ),
 
                 // ITEMS
@@ -107,19 +122,26 @@ class AddScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    SectionTitle(
-                      title: "Total",
-                    ),
-                    const SizedBox(
-                      width: 20.0,
-                    ),
-                    Text(
-                      "Rp. 300.000,00",
-                      style: primary700.copyWith(fontSize: 28.0),
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  child: Row(
+                    children: [
+                      SectionTitle(
+                        title: "Total",
+                      ),
+                      const SizedBox(
+                        width: 20.0,
+                      ),
+                      Text(
+                        "Rp. 300.000,00",
+                        style: primary700.copyWith(fontSize: 28.0),
+                      )
+                    ],
+                  ),
+                ),
+                ButtonWidget(
+                  onPress: () {},
+                  text: "Submit",
                 )
               ],
             ),
