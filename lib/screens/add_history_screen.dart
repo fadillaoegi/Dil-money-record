@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_print
+
+import 'package:dilrecord_money/controllers/add_controller.dart';
 import 'package:dilrecord_money/controllers/user_controller.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
@@ -5,13 +8,18 @@ import 'package:dilrecord_money/widgets/button_widget.dart';
 import 'package:dilrecord_money/widgets/section_title_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class AddScreen extends StatelessWidget {
   const AddScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    UserController userController = Get.put(UserController());
+    final userController = Get.put(UserController());
+    final addController = Get.put(AddController());
+
+    final TextEditingController sumberController = TextEditingController();
+    final TextEditingController priceController = TextEditingController();
 
     print(userController.data.id);
     return Scaffold(
@@ -36,21 +44,34 @@ class AddScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    // const Icon(Icons.date_range),
-                    // const SizedBox(
-                    //   width: 10.0,
+                    // NOTE: TANGGAL DINAMIS
+                    Obx(() => Text(
+                          // "02/10/2024",
+                          addController.date,
+                          style: black400.copyWith(fontSize: 20.0),
+                        )),
+                    // NOTE: TANGGAL STATIS
+                    // Text(
+                    //   "02/10/2024",
+                    //   style: black400.copyWith(fontSize: 20.0),
                     // ),
-                    Text(
-                      "02/10/2024",
-                      style: black400.copyWith(fontSize: 20.0),
-                    ),
                     const SizedBox(
                       width: 20.0,
                     ),
                     IconButton(
                         iconSize: 40.0,
                         color: ColorApps.primary,
-                        onPressed: () {},
+                        onPressed: () async {
+                          var resultDate = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2024, 01, 01),
+                              lastDate: DateTime(DateTime.now().year + 1));
+                          if (resultDate != null) {
+                            addController.setDate(
+                                DateFormat("yyy-MM-dd").format(resultDate));
+                          }
+                        },
                         icon: const Icon(Icons.date_range)),
                   ],
                 ),
@@ -61,7 +82,34 @@ class AddScreen extends StatelessWidget {
                     title: "Tipe",
                   ),
                 ),
-                // Drop
+                // NOTE: TYPE DINAMIS
+                Obx(() => DropdownButtonFormField(
+                      decoration:
+                          const InputDecoration(border: OutlineInputBorder()),
+                      items: ["Pemasukan", "Pengeluaran"].map((e) {
+                        return DropdownMenuItem(
+                          value: e,
+                          child: Text(e),
+                        );
+                      }).toList(),
+                      value: addController.type,
+                      onChanged: (value) {
+                        addController.setType(value);
+                      },
+                    )),
+                // NOTE: TYPE STATIS
+                // DropdownButtonFormField(
+                //   decoration:
+                //       const InputDecoration(border: OutlineInputBorder()),
+                //   items: ["Pemasukan", "Pengeluaran"].map((e) {
+                //     return DropdownMenuItem(
+                //       value: e,
+                //       child: Text(e),
+                //     );
+                //   }).toList(),
+                //   onChanged: (value) {},
+                //   value: "Pemasukan",
+                // ),
                 // NOTE: SUMBER
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -70,6 +118,7 @@ class AddScreen extends StatelessWidget {
                   ),
                 ),
                 TextFormField(
+                  controller: sumberController,
                   decoration: const InputDecoration(
                       hintText: "MacBook",
                       border: OutlineInputBorder(borderSide: BorderSide())),
@@ -82,6 +131,7 @@ class AddScreen extends StatelessWidget {
                   ),
                 ),
                 TextFormField(
+                  controller: priceController,
                   decoration: InputDecoration(
                       hintText: "3000000",
                       border: OutlineInputBorder(
@@ -91,7 +141,14 @@ class AddScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: ButtonWidget(
-                    onPress: () {},
+                    onPress: () {
+                      addController.addItem({
+                        "sumber": sumberController.text,
+                        "price": priceController.text
+                      });
+                      sumberController.clear();
+                      priceController.clear();
+                    },
                     text: "Add item",
                   ),
                 ),
@@ -111,15 +168,32 @@ class AddScreen extends StatelessWidget {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(12.0)),
                       border: Border.all(color: ColorApps.primary)),
-                  child: Wrap(
-                    children: [
-                      Chip(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        label: const Text("Sumber"),
-                        deleteIcon: const Icon(Icons.clear),
-                        onDeleted: () {},
-                      ),
-                    ],
+                  child: GetBuilder<AddController>(
+                    // init: AddController(),
+                    initState: (_) {},
+                    builder: (_) {
+                      return Wrap(
+                          runSpacing: 10.0,
+                          spacing: 10.0,
+                          children: List.generate(_.items.length, (index) {
+                            return Chip(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              label: Text(_.items[index]["sumber"]),
+                              deleteIcon: const Icon(Icons.clear),
+                              onDeleted: () {},
+                            );
+                          })
+
+                          // [
+                          //   Chip(
+                          //     padding: const EdgeInsets.only(right: 10.0),
+                          //     label: const Text("Sumber"),
+                          //     deleteIcon: const Icon(Icons.clear),
+                          //     onDeleted: () {},
+                          //   ),
+                          // ],
+                          );
+                    },
                   ),
                 ),
                 Padding(

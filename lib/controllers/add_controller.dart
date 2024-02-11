@@ -1,10 +1,11 @@
 // ignore_for_file: invalid_use_of_protected_member
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class AddController extends GetxController {
   // DATE
-  final _date = "".obs;
+  final _date = DateFormat("yyy-MM-dd").format(DateTime.now()).obs;
   String get date => _date.value;
   setDate(n) => _date.value = n;
   // TYPE
