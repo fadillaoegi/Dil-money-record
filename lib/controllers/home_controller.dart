@@ -28,7 +28,7 @@ class HomeController extends GetxController {
   }
 
   // NOTE: MONTH
-  final _month = "".obs;
+  // final _month = "".obs;
 
   getAnalysis(String idUser) async {
     Map dataAnalysis = await HistorySource.analysis(idUser);
