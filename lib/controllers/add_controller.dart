@@ -4,15 +4,15 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class AddController extends GetxController {
-  // DATE
+  // NOTE: GET DATA DATE 
   final _date = DateFormat("yyy-MM-dd").format(DateTime.now()).obs;
   String get date => _date.value;
   setDate(n) => _date.value = n;
-  // TYPE
+  // NOTE: GET DATA TYPE 
   final _type = "Pemasukan".obs;
   String get type => _type.value;
   setType(n) => _type.value = n;
-  // ITEMS
+  // NOTE: GET DATA ITEMS 
   final _items = [].obs;
   List get items => _items.value;
   addItem(n) {
@@ -26,7 +26,7 @@ class AddController extends GetxController {
     count();
   }
 
-  // TOTAL
+  // NOTE: GET DATA TOTAL
   final _total = 0.0.obs;
   double get total => _total.value;
   // setTotal(n) => _total.value = n;

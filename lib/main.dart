@@ -12,7 +12,6 @@ import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // runApp(const MainApp());
   initializeDateFormatting("id_ID").then((value) {
     runApp(const MainApp());
   });

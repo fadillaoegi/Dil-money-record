@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     });
 
-    // DATA PENGELUARAN MINGGUAN
+    // NOTE: DATA PENGELUARAN MINGGUAN STATIS
     // List<OrdinalData> ordinalList = [
     //   OrdinalData(domain: 'Mon', measure: 3),
     //   OrdinalData(domain: 'Tue', measure: 5),
@@ -47,7 +47,11 @@ class _HomeScreenState extends State<HomeScreen> {
     // ];
 
     final ordinalGroup = [
-      OrdinalGroup(id: '1', data: ordinalList, color: Colors.pinkAccent),
+      OrdinalGroup(
+        id: '1',
+        data: ordinalList,
+        color: Colors.pinkAccent,
+      ),
     ];
 
     // DATAPENGELUARAN BULANAN STATIS

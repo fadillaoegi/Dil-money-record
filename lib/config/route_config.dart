@@ -13,7 +13,7 @@ List<GetPage<dynamic>>? getScreens = [
   GetPage(name: RouteScreen.register, page: () => const RegisterScreen()),
   GetPage(name: RouteScreen.login, page: () => const LoginScreen()),
   GetPage(name: RouteScreen.home, page: () => const HomeScreen()),
-  GetPage(name: RouteScreen.add, page: () => const AddScreen()),
+  GetPage(name: RouteScreen.add, page: () => AddScreen()),
   GetPage(name: RouteScreen.detail, page: () => const DetailScreen()),
   GetPage(name: RouteScreen.history, page: () => const HistoryScreen()),
 ];

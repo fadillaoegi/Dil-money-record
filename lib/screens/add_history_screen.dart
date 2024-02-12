@@ -1,6 +1,11 @@
+// ignore_for_file: avoid_print
+
+import 'dart:convert';
+
 import 'package:dilrecord_money/config/app_format_config.dart';
 import 'package:dilrecord_money/controllers/add_controller.dart';
 import 'package:dilrecord_money/controllers/user_controller.dart';
+import 'package:dilrecord_money/sources/history_source.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:dilrecord_money/widgets/button_widget.dart';
@@ -10,17 +15,28 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class AddScreen extends StatelessWidget {
-  const AddScreen({super.key});
+  AddScreen({super.key});
+  final userController = Get.put(UserController());
+  final addController = Get.put(AddController());
+  final TextEditingController sumberController = TextEditingController();
+  final TextEditingController priceController = TextEditingController();
+  addHistory() async {
+    bool success = await HistorySource.addIncomeOutcome(
+        userController.data.id!,
+        addController.type,
+        addController.date,
+        jsonEncode(addController.items),
+        addController.total.toString());
+
+    if (success) {
+      Future.delayed(const Duration(seconds: 3), () {
+        Get.back(result: true);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final userController = Get.put(UserController());
-    final addController = Get.put(AddController());
-
-    final TextEditingController sumberController = TextEditingController();
-    final TextEditingController priceController = TextEditingController();
-
-    print(userController.data.id);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Tambah Baru"),
@@ -130,6 +146,7 @@ class AddScreen extends StatelessWidget {
                   ),
                 ),
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   controller: priceController,
                   decoration: InputDecoration(
                       hintText: "3000000",
@@ -221,7 +238,7 @@ class AddScreen extends StatelessWidget {
                   ),
                 ),
                 ButtonWidget(
-                  onPress: () {},
+                  onPress: () => addHistory(),
                   text: "Submit",
                 )
               ],
