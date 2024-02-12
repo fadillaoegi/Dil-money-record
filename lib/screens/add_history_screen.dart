@@ -1,5 +1,4 @@
-// ignore_for_file: avoid_print
-
+import 'package:dilrecord_money/config/app_format_config.dart';
 import 'package:dilrecord_money/controllers/add_controller.dart';
 import 'package:dilrecord_money/controllers/user_controller.dart';
 import 'package:dilrecord_money/themes/colors.dart';
@@ -153,7 +152,7 @@ class AddScreen extends StatelessWidget {
                   ),
                 ),
 
-                // ITEMS
+                // NOTE: ITEMS
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
                   child: SectionTitle(
@@ -169,9 +168,10 @@ class AddScreen extends StatelessWidget {
                           const BorderRadius.all(Radius.circular(12.0)),
                       border: Border.all(color: ColorApps.primary)),
                   child: GetBuilder<AddController>(
-                    // init: AddController(),
+                    init: AddController(),
                     initState: (_) {},
                     builder: (_) {
+                      // NOTE: ITEMS DINAMIS
                       return Wrap(
                           runSpacing: 10.0,
                           spacing: 10.0,
@@ -180,10 +180,10 @@ class AddScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(right: 10.0),
                               label: Text(_.items[index]["sumber"]),
                               deleteIcon: const Icon(Icons.clear),
-                              onDeleted: () {},
+                              onDeleted: () => addController.deleteItem(index),
                             );
                           })
-
+                          // NOTE: ITEMS STATIS
                           // [
                           //   Chip(
                           //     padding: const EdgeInsets.only(right: 10.0),
@@ -206,10 +206,17 @@ class AddScreen extends StatelessWidget {
                       const SizedBox(
                         width: 20.0,
                       ),
-                      Text(
-                        "Rp. 300.000,00",
-                        style: primary700.copyWith(fontSize: 28.0),
-                      )
+                      // NOTE: TOTAL DINAMIS
+                      Obx(() => Text(
+                            // AppFormat.currency("300000"),
+                            AppFormat.currency(addController.total.toString()),
+                            style: primary700.copyWith(fontSize: 28.0),
+                          )),
+                      // NOTE: TOTAL STATIS
+                      // Text(
+                      //   "Rp. 300.000,00",
+                      //   style: primary700.copyWith(fontSize: 28.0),
+                      // ),
                     ],
                   ),
                 ),

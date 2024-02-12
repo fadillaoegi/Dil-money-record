@@ -2,13 +2,13 @@ import 'package:dilrecord_money/sources/history_source.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  // TODAY
+  // NOTE: TODAY
   final _todayOutCome = 0.0.obs;
   double get todayOutCome => _todayOutCome.value;
   final _todayPercent = "0".obs;
   String get todayPercent => _todayPercent.value;
 
-  // WEEKS
+  // NOTE: WEEKS
   final _weeks = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0].obs;
   // ignore: invalid_use_of_protected_member
   List<double> get week => _weeks.value;
@@ -27,7 +27,8 @@ class HomeController extends GetxController {
     ];
   }
 
-  // MOUNTHS
+  // NOTE: MONTH
+  final _month = "".obs;
 
   getAnalysis(String idUser) async {
     Map dataAnalysis = await HistorySource.analysis(idUser);
