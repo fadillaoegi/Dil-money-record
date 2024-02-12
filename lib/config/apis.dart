@@ -1,7 +1,6 @@
 class ApiApps {
-  // NOTE: APi LOCAL
-  // static const baseUrl = "http://localhost/apis/dilrecordmoney-api";
-  static const baseUrl = "http://190.110.1.182/apis/dilrecordmoney-api";
+  // NOTE: API LOCAL
+  static const baseUrl = "http://localhost/apis/dilrecordmoney-api";
 
   // NOTE: API HISTORY
   static const history = "$baseUrl/history";

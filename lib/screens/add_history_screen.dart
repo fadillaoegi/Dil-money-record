@@ -32,6 +32,7 @@ class AddScreen extends StatelessWidget {
       Future.delayed(const Duration(seconds: 3), () {
         Get.back(result: true);
       });
+      // Get.back(result: true);
     }
   }
 

@@ -73,6 +73,7 @@ class DrawerWidget extends StatelessWidget {
                   text: "Tambah Baru",
                   onPress: () {
                     Get.toNamed(RouteScreen.add);
+                    
                   },
                   prefix: Icons.plus_one,
                 ),
