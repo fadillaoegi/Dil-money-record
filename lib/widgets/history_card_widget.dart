@@ -40,9 +40,12 @@ class HistoryCard extends StatelessWidget {
             "Rp 200.000,00",
             style: primary700.copyWith(fontSize: 16.0),
           ),
-          Icon(
-            Icons.delete_forever_outlined,
-            color: ColorApps.error,
+          InkWell(
+            onTap: () {},
+            child: Icon(
+              Icons.delete_forever_outlined,
+              color: ColorApps.error,
+            ),
           ),
         ],
       ),

@@ -40,19 +40,21 @@ class DrawerWidget extends StatelessWidget {
                     const SizedBox(
                       width: 10.0,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Nabila",
-                          style: black600.copyWith(fontSize: 12.0),
-                        ),
-                        Text(
-                          "nabila@gmail.com",
-                          style: black600.copyWith(fontSize: 12.0),
-                        ),
-                      ],
-                    )
+                    Obx(() => Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              // "Nabila",
+                              userController.data.name!,
+                              style: black600.copyWith(fontSize: 12.0),
+                            ),
+                            Text(
+                              // "nabila@gmail.com",
+                              userController.data.email!,
+                              style: black600.copyWith(fontSize: 12.0),
+                            ),
+                          ],
+                        ))
                   ],
                 ),
               ),
@@ -96,7 +98,13 @@ class DrawerWidget extends StatelessWidget {
                   ),
                   MenuDrawer(
                     text: "Pemasukan",
-                    onPress: () {},
+                    onPress: () {
+                      // Get.toNamed(RouteScreen.history);
+                      Get.toNamed(
+                        RouteScreen.history,
+                        arguments: "Pemasukan",
+                      );
+                    },
                     prefix: Icons.arrow_downward,
                   ),
                   const Divider(
@@ -104,7 +112,12 @@ class DrawerWidget extends StatelessWidget {
                   ),
                   MenuDrawer(
                     text: "Pengeluaran",
-                    onPress: () {},
+                    onPress: () {
+                      Get.toNamed(
+                        RouteScreen.history,
+                        arguments: "Pengeluaran",
+                      );
+                    },
                     prefix: Icons.arrow_upward,
                   ),
                   const Divider(
