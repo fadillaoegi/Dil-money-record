@@ -62,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
       OrdinalData(domain: 'Thu', measure: 6.5, color: Colors.pink[300]),
     ];
     // print(userController.data.name);
+    // print(userController.data.id);
 
     return Scaffold(
       endDrawer: const DrawerWidget(),

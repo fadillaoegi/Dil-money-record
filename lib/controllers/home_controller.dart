@@ -5,7 +5,7 @@ class HomeController extends GetxController {
   // NOTE: TODAY
   final _todayOutCome = 0.0.obs;
   double get todayOutCome => _todayOutCome.value;
-  final _todayPercent = "0".obs;
+  final _todayPercent = "".obs;
   String get todayPercent => _todayPercent.value;
 
   // NOTE: WEEKS
@@ -39,7 +39,9 @@ class HomeController extends GetxController {
     double different = (todayOutCome - yesterday).abs();
     bool isSame = todayOutCome.isEqual(yesterday);
     bool isPlus = todayOutCome.isGreaterThan(yesterday);
-    double byYesterday = yesterday == 0 ? 1 : yesterday;
+    double byYesterday =
+        (todayOutCome + yesterday) == 0 ? 1 : (todayOutCome + yesterday);
+    // double byYesterday = yesterday == 0 ? 1 : yesterday;
     double percent = (different / byYesterday) * 100;
 
     _todayPercent.value = isSame
@@ -48,6 +50,7 @@ class HomeController extends GetxController {
             ? "+${percent.toStringAsFixed(1)}% dibanding kemarin"
             : "-${percent.toStringAsFixed(1)}% dibanding kemarin";
 
-    _weeks.value = (dataAnalysis["week"]).map((e) => e.toDouble()).toList();
+    _weeks.value =
+        List.castFrom(dataAnalysis['week'].map((e) => e.toDouble()).toList());
   }
 }

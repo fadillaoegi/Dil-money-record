@@ -1,5 +1,7 @@
 import 'package:dilrecord_money/config/assets_localate.dart';
 import 'package:dilrecord_money/config/session.dart';
+import 'package:dilrecord_money/controllers/home_controller.dart';
+import 'package:dilrecord_money/controllers/user_controller.dart';
 import 'package:dilrecord_money/routes/routes.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
@@ -12,101 +14,114 @@ class DrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeController = Get.put(HomeController());
+    final userController = Get.put(UserController());
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // HEADER DRAWER
-            Padding(
-              padding: const EdgeInsets.only(top: 40.0, bottom: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+        child: RefreshIndicator(
+          onRefresh: () async {
+            homeController.getAnalysis(userController.data.id!);
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // HEADER DRAWER
+              Padding(
+                padding: const EdgeInsets.only(top: 40.0, bottom: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      Assets.logo,
+                      height: 40.0,
+                      width: 40.0,
+                    ),
+                    const SizedBox(
+                      width: 10.0,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Nabila",
+                          style: black600.copyWith(fontSize: 12.0),
+                        ),
+                        Text(
+                          "nabila@gmail.com",
+                          style: black600.copyWith(fontSize: 12.0),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+
+              ElevatedButton(
+                  onPressed: () {
+                    SessionUser.clearUser();
+                    Get.offAllNamed(RouteScreen.login);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: ColorApps.primary),
+                  child: Text(
+                    "Logout",
+                    style: white700.copyWith(fontSize: 14.0),
+                  )),
+
+              const SizedBox(
+                height: 20.0,
+              ),
+
+              // MENU DRAWER
+              Column(
                 children: [
-                  Image.asset(
-                    Assets.logo,
+                  const Divider(),
+                  MenuDrawer(
+                    text: "Tambah Baru",
+                    onPress: () {
+                      // NOTE: PAKAI ROUTE
+                      Get.toNamed(RouteScreen.add)?.then((value) {
+                        homeController.getAnalysis(userController.data.id!);
+                      });
+                      // NOTE: TANPA ROUTE
+                      // Get.to(() => AddScreen())?.then((value) {
+                      //   homeController.getAnalysis(userController.data.id!);
+                      // });
+                    },
+                    prefix: Icons.plus_one,
+                  ),
+                  const Divider(
                     height: 40.0,
-                    width: 40.0,
                   ),
-                  const SizedBox(
-                    width: 10.0,
+                  MenuDrawer(
+                    text: "Pemasukan",
+                    onPress: () {},
+                    prefix: Icons.arrow_downward,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Nabila",
-                        style: black600.copyWith(fontSize: 12.0),
-                      ),
-                      Text(
-                        "nabila@gmail.com",
-                        style: black600.copyWith(fontSize: 12.0),
-                      ),
-                    ],
-                  )
+                  const Divider(
+                    height: 40.0,
+                  ),
+                  MenuDrawer(
+                    text: "Pengeluaran",
+                    onPress: () {},
+                    prefix: Icons.arrow_upward,
+                  ),
+                  const Divider(
+                    height: 40.0,
+                  ),
+                  MenuDrawer(
+                    text: "Riwayat",
+                    onPress: () {},
+                    prefix: Icons.history,
+                  ),
+                  const Divider(
+                    height: 40.0,
+                  ),
                 ],
               ),
-            ),
-
-            ElevatedButton(
-                onPressed: () {
-                  SessionUser.clearUser();
-                  Get.offAllNamed(RouteScreen.login);
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorApps.primary),
-                child: Text(
-                  "Logout",
-                  style: white700.copyWith(fontSize: 14.0),
-                )),
-
-            const SizedBox(
-              height: 20.0,
-            ),
-
-            // MENU DRAWER
-            Column(
-              children: [
-                const Divider(),
-                MenuDrawer(
-                  text: "Tambah Baru",
-                  onPress: () {
-                    Get.toNamed(RouteScreen.add);
-                    
-                  },
-                  prefix: Icons.plus_one,
-                ),
-                const Divider(
-                  height: 40.0,
-                ),
-                MenuDrawer(
-                  text: "Pemasukan",
-                  onPress: () {},
-                  prefix: Icons.arrow_downward,
-                ),
-                const Divider(
-                  height: 40.0,
-                ),
-                MenuDrawer(
-                  text: "Pengeluaran",
-                  onPress: () {},
-                  prefix: Icons.arrow_upward,
-                ),
-                const Divider(
-                  height: 40.0,
-                ),
-                MenuDrawer(
-                  text: "Riwayat",
-                  onPress: () {},
-                  prefix: Icons.history,
-                ),
-                const Divider(
-                  height: 40.0,
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
