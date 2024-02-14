@@ -9,6 +9,7 @@ class CardInOutCome extends StatelessWidget {
     return Container(
       height: 51.0,
       width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 20.0),
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       decoration: BoxDecoration(
           color: Colors.white,
@@ -29,12 +30,16 @@ class CardInOutCome extends StatelessWidget {
             style: primary700.copyWith(fontSize: 16.0),
           ),
           Text("Rp 200.000,00", style: primary700.copyWith(fontSize: 16.0)),
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.menu,
-                size: 20.0,
-              ))
+          // IconButton(
+          //     onPressed: () {},
+          //     icon: const Icon(
+          //       Icons.menu,
+          //       size: 20.0,
+          //     )),
+          PopupMenuButton(
+            itemBuilder: (context) => [],
+            onSelected: (value) {},
+          )
         ],
       ),
     );

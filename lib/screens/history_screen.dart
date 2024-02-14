@@ -1,7 +1,6 @@
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:dilrecord_money/widgets/card_income_outcome_widget.dart';
-import 'package:dilrecord_money/widgets/history_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -53,11 +52,11 @@ class HistoryScreen extends StatelessWidget {
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
         margin: const EdgeInsets.all(20.0),
-        child: ListView(children: const [
-          CardInOutCome(),
-          HistoryCard(),
-        ]),
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) => const CardInOutCome(),
+        ),
       ),
     );
-  }
+  }  
 }
