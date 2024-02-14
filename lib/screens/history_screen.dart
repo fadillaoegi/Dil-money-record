@@ -25,6 +25,7 @@ class HistoryScreen extends StatelessWidget {
               child: TextFormField(
                 onTap: () {},
                 decoration: InputDecoration(
+                    hintText: "2024-02-14",
                     suffixIcon: const Icon(
                       Icons.search,
                       color: Colors.white,
