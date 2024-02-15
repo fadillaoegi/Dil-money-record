@@ -1,6 +1,7 @@
 // ignore_for_file: curly_braces_in_flow_control_structures, avoid_print
 import 'package:dilrecord_money/config/apis.dart';
 import 'package:dilrecord_money/config/app_request_config.dart';
+import 'package:dilrecord_money/models/history.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -56,5 +57,25 @@ class HistorySource {
       }
     }
     return responseAdd["success"];
+  }
+
+  static Future<List<History>> inOutcome(String userId, String type) async {
+    String url = ApiApps.inOutcome;
+    Map? responseInOutCome = await AppRequest.posts(url, {
+      "id_user": userId,
+      "type": type,
+    });
+
+    if (responseInOutCome == null) return [];
+    if (responseInOutCome["success"]) {
+      List list = responseInOutCome["data"];
+      final listData =
+          list.map((element) => History.fromJson(element)).toList();
+      print("ini data list $list");
+      print("ini data listData $listData");
+      return listData;
+    }
+
+    return [];
   }
 }

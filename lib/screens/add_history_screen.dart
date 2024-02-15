@@ -3,7 +3,7 @@
 import 'dart:convert';
 
 import 'package:dilrecord_money/config/app_format_config.dart';
-import 'package:dilrecord_money/controllers/add_controller.dart';
+import 'package:dilrecord_money/controllers/history/add_controller.dart';
 import 'package:dilrecord_money/controllers/user_controller.dart';
 import 'package:dilrecord_money/sources/history_source.dart';
 import 'package:dilrecord_money/themes/colors.dart';
