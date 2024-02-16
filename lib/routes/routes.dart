@@ -7,4 +7,5 @@ class RouteScreen {
   static String detail = "$root/detail";
   static String add = "$root/add";
   static String history = "$root/history";
+  static String historyUpdate = "$root/historyUpdate";
 }

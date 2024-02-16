@@ -6,6 +6,7 @@ import 'package:dilrecord_money/screens/home_screen.dart';
 import 'package:dilrecord_money/screens/login_screen.dart';
 import 'package:dilrecord_money/screens/register_screen.dart';
 import 'package:dilrecord_money/screens/splash_screen.dart';
+import 'package:dilrecord_money/screens/update_history_screen.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? getScreens = [
@@ -16,4 +17,6 @@ List<GetPage<dynamic>>? getScreens = [
   GetPage(name: RouteScreen.add, page: () => AddScreen()),
   GetPage(name: RouteScreen.detail, page: () => const DetailScreen()),
   GetPage(name: RouteScreen.history, page: () => const HistoryScreen()),
+  GetPage(
+      name: RouteScreen.historyUpdate, page: () => const HistoryUpdateScreen()),
 ];

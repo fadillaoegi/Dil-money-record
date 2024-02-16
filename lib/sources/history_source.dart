@@ -69,11 +69,32 @@ class HistorySource {
     if (responseInOutCome == null) return [];
     if (responseInOutCome["success"]) {
       List list = responseInOutCome["data"];
-      final listData =
+      final listToModel =
           list.map((element) => History.fromJson(element)).toList();
       print("ini data list $list");
-      print("ini data listData $listData");
-      return listData;
+      print("ini data listData $listToModel");
+      return listToModel;
+    }
+
+    return [];
+  }
+
+  static Future<List<History>> inOutcomeSearch(
+      String userId, String type, String date) async {
+    String url = ApiApps.search;
+    Map? responseSearch = await AppRequest.posts(url, {
+      "id_user": userId,
+      "type": type,
+      "date": date,
+    });
+
+    if (responseSearch == null) return [];
+    if (responseSearch["success"]) {
+      List listRes = responseSearch["data"];
+      final listToModel =
+          listRes.map((element) => History.fromJson(element)).toList();
+
+      return listToModel;
     }
 
     return [];

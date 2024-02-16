@@ -1,50 +1,25 @@
-// ignore_for_file: avoid_print
-
 import 'package:dilrecord_money/controllers/history/inOutcome_controller.dart';
 import 'package:dilrecord_money/controllers/user_controller.dart';
-import 'package:dilrecord_money/models/history.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
-import 'package:dilrecord_money/widgets/card_income_outcome_widget.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:dilrecord_money/widgets/history_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class HistoryScreen extends StatefulWidget {
-  const HistoryScreen({
-    super.key,
-  });
-
-  @override
-  State<HistoryScreen> createState() => _HistoryScreenState();
-}
-
-class _HistoryScreenState extends State<HistoryScreen> {
-  final inOutcomeController = Get.put(InOutcomeController());
-  final userController = Get.put(UserController());
-  final searchController = TextEditingController();
-  final String type = Get.arguments;
-
-  refresh() {
-    inOutcomeController.getList(userController.data.id, type);
-  }
-
-  @override
-  void initState() {
-    refresh();
-    super.initState();
-  }
+class HistoryUpdateScreen extends StatelessWidget {
+  const HistoryUpdateScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    print(type);
-    print(userController.data.id);
+    final inOutcomeController = Get.put(InOutcomeController());
+    final userController = Get.put(UserController());
+    final searchController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Row(
           children: [
-            Text(type),
+            const Text("Riwayat"),
             Expanded(
                 child: Container(
               margin: const EdgeInsets.only(left: 8.0),
@@ -65,11 +40,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     hintText: "2024-02-14",
                     suffixIcon: InkWell(
                       onTap: () {
-                        inOutcomeController.getSearch(
-                          userController.data.id,
-                          type,
-                          searchController.text,
-                        );
+                        // inOutcomeController.getSearch(
+                        //   userController.data.id,
+                        //   type,
+                        //   searchController.text,
+                        // );
                       },
                       child: const Icon(
                         Icons.search,
@@ -98,34 +73,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
       body: Container(
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
-        margin: const EdgeInsets.all(20.0),
-        child: GetBuilder<InOutcomeController>(
-          init: InOutcomeController(),
-          initState: (_) {},
-          builder: (_) {
-            if (_.loading) {
-              return CupertinoActivityIndicator(
-                radius: 26.0,
-                color: ColorApps.primary,
-              );
-            }
-            if (_.list.isEmpty) {
-              return const Text("Tidak ada history in or out");
-            }
-            return RefreshIndicator(
-              onRefresh: () async => refresh(),
-              child: ListView.builder(
-                itemCount: _.list.length,
-                itemBuilder: (context, index) {
-                  History history = _.list[index];
-                  return CardInOutCome(
-                    date: history.date,
-                    nominal: history.total,
-                  );
-                },
-              ),
-            );
-          },
+        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: ListView.builder(
+          itemCount: 20,
+          itemBuilder: (context, index) => const HistoryCard(),
         ),
       ),
     );

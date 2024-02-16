@@ -26,4 +26,20 @@ class InOutcomeController extends GetxController {
       },
     );
   }
+
+  getSearch(userId, type, date) async {
+    _loading.value = true;
+    update();
+
+    _list.value = await HistorySource.inOutcomeSearch(userId, type, date);
+    update();
+
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        _loading.value = false;
+        update();
+      },
+    );
+  }
 }

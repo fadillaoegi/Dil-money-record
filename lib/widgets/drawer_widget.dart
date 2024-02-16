@@ -125,7 +125,9 @@ class DrawerWidget extends StatelessWidget {
                   ),
                   MenuDrawer(
                     text: "Riwayat",
-                    onPress: () {},
+                    onPress: () {
+                      Get.toNamed(RouteScreen.historyUpdate);
+                    },
                     prefix: Icons.history,
                   ),
                   const Divider(

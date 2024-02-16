@@ -1,5 +1,4 @@
 // ignore_for_file: body_might_complete_normally_nullable
-
 import 'dart:convert';
 import 'package:d_method/d_method.dart';
 import 'package:get/get.dart';
@@ -10,7 +9,6 @@ class AppRequest {
     try {
       final response = await http.get(Uri.parse(url), headers: headers);
       DMethod.printTitle('try: $url', response.body);
-
       if (response.statusCode == 200) {
         Map? responseBody = jsonDecode(response.body);
         return responseBody;

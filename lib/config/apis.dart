@@ -8,6 +8,7 @@ class ApiApps {
   static const addIncomeOutcome = "$history/add.php";
   static const analysis = "$history/analysis.php";
   static const inOutcome = "$history/income_outcome.php";
+  static const search = "$history/income_outcome_search.php";
 
   // NOTE: API USER AUTH
   static const user = "$baseUrl/user";
