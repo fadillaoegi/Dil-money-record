@@ -126,7 +126,7 @@ class DrawerWidget extends StatelessWidget {
                   MenuDrawer(
                     text: "Riwayat",
                     onPress: () {
-                      Get.toNamed(RouteScreen.historyUpdate);
+                      // Get.toNamed(RouteScreen.historyUpdate);
                     },
                     prefix: Icons.history,
                   ),

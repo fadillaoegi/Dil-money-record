@@ -6,6 +6,7 @@ class ApiApps {
   // NOTE: API HISTORY
   static const history = "$baseUrl/history";
   static const addIncomeOutcome = "$history/add.php";
+  static const update = "$history/update.php";
   static const analysis = "$history/analysis.php";
   static const inOutcome = "$history/income_outcome.php";
   static const search = "$history/income_outcome_search.php";
