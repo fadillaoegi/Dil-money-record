@@ -1,5 +1,5 @@
 import 'package:dilrecord_money/config/assets_localate.dart';
-import 'package:dilrecord_money/screens/register_screen.dart';
+import 'package:dilrecord_money/pages/screens/register_screen.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:flutter/material.dart';

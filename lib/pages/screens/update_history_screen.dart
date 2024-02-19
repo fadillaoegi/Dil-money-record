@@ -1,7 +1,10 @@
 // ignore_for_file: avoid_print
+import 'dart:convert';
 import 'package:dilrecord_money/config/app_format_config.dart';
-import 'package:dilrecord_money/controllers/history/add_controller.dart';
-import 'package:dilrecord_money/controllers/user_controller.dart';
+import 'package:dilrecord_money/pages/controllers/history/add_controller.dart';
+import 'package:dilrecord_money/pages/controllers/history/update_controller.dart';
+import 'package:dilrecord_money/pages/controllers/user_controller.dart';
+import 'package:dilrecord_money/data/sources/history_source.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:dilrecord_money/widgets/button_widget.dart';
@@ -13,24 +16,23 @@ import 'package:intl/intl.dart';
 class HistoryUpdateScreen extends StatelessWidget {
   HistoryUpdateScreen({super.key});
   final userController = Get.put(UserController());
-  final addController = Get.put(AddController());
+  final updateController = Get.put(UpdateController());
   final TextEditingController sumberController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
-  // addHistory() async {
-  //   bool success = await HistorySource.addIncomeOutcome(
-  //       userController.data.id!,
-  //       addController.type,
-  //       addController.date,
-  //       jsonEncode(addController.items),
-  //       addController.total.toString());
+  final argumentHistory = Get.arguments;
 
-  //   if (success) {
-  //     Future.delayed(const Duration(seconds: 3), () {
-  //       Get.back(result: true);
-  //     });
-  //     // Get.back(result: true);
-  //   }
-  // }
+  update() async {
+    bool success = await HistorySource.update(
+        userController.data.id!,
+        updateController.type,
+        updateController.type,
+        jsonEncode(updateController.items),
+        updateController.total.toString());
+    if (success) {
+      //       Get.back(result: true);
+      Get.snackbar("Update History", "Berhasil");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,7 @@ class HistoryUpdateScreen extends StatelessWidget {
                     // NOTE: TANGGAL DINAMIS
                     Obx(() => Text(
                           // "02/10/2024",
-                          addController.date,
+                          updateController.date,
                           style: black400.copyWith(fontSize: 20.0),
                         )),
                     // NOTE: TANGGAL STATIS
@@ -80,7 +82,7 @@ class HistoryUpdateScreen extends StatelessWidget {
                               firstDate: DateTime(2024, 01, 01),
                               lastDate: DateTime(DateTime.now().year + 1));
                           if (resultDate != null) {
-                            addController.setDate(
+                            updateController.setDate(
                                 DateFormat("yyy-MM-dd").format(resultDate));
                           }
                         },
@@ -104,9 +106,9 @@ class HistoryUpdateScreen extends StatelessWidget {
                           child: Text(e),
                         );
                       }).toList(),
-                      value: addController.type,
+                      value: updateController.type,
                       onChanged: (value) {
-                        addController.setType(value);
+                        updateController.setType(value);
                       },
                     )),
                 // NOTE: TYPE STATIS
@@ -155,7 +157,7 @@ class HistoryUpdateScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 20.0),
                   child: ButtonWidget(
                     onPress: () {
-                      addController.addItem({
+                      updateController.addItem({
                         "sumber": sumberController.text,
                         "price": priceController.text
                       });
@@ -194,7 +196,8 @@ class HistoryUpdateScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(right: 10.0),
                               label: Text(_.items[index]["sumber"]),
                               deleteIcon: const Icon(Icons.clear),
-                              onDeleted: () => addController.deleteItem(index),
+                              onDeleted: () =>
+                                  updateController.deleteItem(index),
                             );
                           })
                           // NOTE: ITEMS STATIS
@@ -223,7 +226,8 @@ class HistoryUpdateScreen extends StatelessWidget {
                       // NOTE: TOTAL DINAMIS
                       Obx(() => Text(
                             // AppFormat.currency("300000"),
-                            AppFormat.currency(addController.total.toString()),
+                            AppFormat.currency(
+                                updateController.total.toString()),
                             style: primary700.copyWith(fontSize: 28.0),
                           )),
                       // NOTE: TOTAL STATIS

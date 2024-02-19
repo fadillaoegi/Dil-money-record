@@ -1,12 +1,12 @@
+import 'package:dilrecord_money/pages/screens/add_history_screen.dart';
+import 'package:dilrecord_money/pages/screens/detail_screen.dart';
+import 'package:dilrecord_money/pages/screens/history_screen.dart';
+import 'package:dilrecord_money/pages/screens/home_screen.dart';
+import 'package:dilrecord_money/pages/screens/login_screen.dart';
+import 'package:dilrecord_money/pages/screens/register_screen.dart';
+import 'package:dilrecord_money/pages/screens/splash_screen.dart';
+import 'package:dilrecord_money/pages/screens/update_history_screen.dart';
 import 'package:dilrecord_money/routes/routes.dart';
-import 'package:dilrecord_money/screens/add_history_screen.dart';
-import 'package:dilrecord_money/screens/detail_screen.dart';
-import 'package:dilrecord_money/screens/history_screen.dart';
-import 'package:dilrecord_money/screens/home_screen.dart';
-import 'package:dilrecord_money/screens/login_screen.dart';
-import 'package:dilrecord_money/screens/register_screen.dart';
-import 'package:dilrecord_money/screens/splash_screen.dart';
-import 'package:dilrecord_money/screens/update_history_screen.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? getScreens = [

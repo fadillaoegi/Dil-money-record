@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
 
-import 'package:dilrecord_money/controllers/history/inOutcome_controller.dart';
-import 'package:dilrecord_money/controllers/user_controller.dart';
-import 'package:dilrecord_money/models/history.dart';
+import 'package:dilrecord_money/pages/controllers/history/inOutcome_controller.dart';
+import 'package:dilrecord_money/pages/controllers/user_controller.dart';
+import 'package:dilrecord_money/data/models/history.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:dilrecord_money/widgets/card_income_outcome_widget.dart';
@@ -24,7 +24,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   final inOutcomeController = Get.put(InOutcomeController());
   final userController = Get.put(UserController());
   final searchController = TextEditingController();
-  final String type = Get.arguments;
+  final type = Get.arguments;
 
   refresh() {
     inOutcomeController.getList(userController.data.id, type);
