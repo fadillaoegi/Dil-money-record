@@ -25,6 +25,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final UserController userController = Get.put(UserController());
   final HomeController homeController = Get.put(HomeController());
+
+  refresh() {
+    homeController.getAnalysis(userController.data.id!);
+    // print(userController.data.id!);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    refresh();
+  }
+
   @override
   Widget build(BuildContext context) {
     // DATAPENGELUARAN MINGGUAN DINAMIS
@@ -61,8 +73,6 @@ class _HomeScreenState extends State<HomeScreen> {
       OrdinalData(domain: 'Wed', measure: 9, color: Colors.purple[300]),
       OrdinalData(domain: 'Thu', measure: 6.5, color: Colors.pink[300]),
     ];
-    // print(userController.data.name);
-    // print(userController.data.id);
 
     return Scaffold(
       endDrawer: const DrawerWidget(),
