@@ -44,9 +44,11 @@ class _LoginScreenState extends State<LoginScreen> {
             );
             if (success) {
               DInfo.dialogSuccess(context, "Login Berhasil");
-              DInfo.closeDialog(context);
-              Get.snackbar("Login", "Berhasil");
-              Get.offAllNamed(RouteScreen.home);
+              DInfo.closeDialog(context, actionAfterClose: () {
+                Get.offNamed(RouteScreen.home);
+              });
+              // Get.snackbar("Login", "Berhasil");
+              // Get.offAllNamed(RouteScreen.home);
             } else {
               Get.snackbar("Login", "Gagal");
             }

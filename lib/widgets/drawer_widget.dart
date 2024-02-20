@@ -45,12 +45,14 @@ class DrawerWidget extends StatelessWidget {
                           children: [
                             Text(
                               // "Nabila",
-                              userController.data.name!,
+                              // userController.data.name!,
+                              "${userController.data.name}",
                               style: black600.copyWith(fontSize: 12.0),
                             ),
                             Text(
                               // "nabila@gmail.com",
-                              userController.data.email!,
+                              // userController.data.email!,
+                              "${userController.data.email}",
                               style: black600.copyWith(fontSize: 12.0),
                             ),
                           ],

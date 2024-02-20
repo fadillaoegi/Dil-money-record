@@ -35,9 +35,12 @@ class MainApp extends StatelessWidget {
         future: SessionUser.getUser(),
         builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
           if (snapshot.data != null && snapshot.data!.id != null) {
-            // print("masuk disini aja");
+            print("masuk disini aja");
+            print(snapshot.data);
+            print(snapshot.data!.email);
             return const HomeScreen();
           } else {
+            print("habis masuk di if langsung ke else");
             return const LoginScreen();
           }
         },
