@@ -1,5 +1,4 @@
 // ignore_for_file: avoid_print
-
 import 'package:dilrecord_money/config/screens_config.dart';
 import 'package:dilrecord_money/config/session.dart';
 import 'package:dilrecord_money/data/models/user.dart';
