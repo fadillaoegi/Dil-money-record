@@ -27,7 +27,7 @@ class HistorySource {
     return responseAnalysis;
   }
 
-  // NOTE: ADD DATA
+  // NOTE: ADD DATA InOutcome
   static Future<bool> addIncomeOutcome(String idUser, String type, String date,
       String detail, String total) async {
     String url = ApiApps.addIncomeOutcome;
@@ -60,7 +60,7 @@ class HistorySource {
     return responseAdd["success"];
   }
 
-  // NOTE: UPDATE DATA
+  // NOTE: UPDATE DATA InOutcome
   static Future<bool> update(String idUser, String type, String date,
       String detail, String total) async {
     String url = ApiApps.update;
@@ -98,6 +98,7 @@ class HistorySource {
     return resDelete["success"];
   }
 
+  // NOTE: GET InOutcome
   static Future<List<History>> inOutcome(String userId, String type) async {
     String url = ApiApps.inOutcome;
     Map? responseInOutCome = await AppRequest.posts(url, {
@@ -110,15 +111,15 @@ class HistorySource {
       List list = responseInOutCome["data"];
       final listToModel =
           list.map((element) => History.fromJson(element)).toList();
-      print("ini data list $list");
-      print("ini data listData $listToModel");
+      // print("ini data list $list");
+      // print("ini data listData $listToModel");
       return listToModel;
     }
 
     return [];
   }
 
-  // NOTE: SEARCH DATA
+  // NOTE: SEARCH DATA InOutcome
   static Future<List<History>> inOutcomeSearch(
       String userId, String type, String date) async {
     String url = ApiApps.search;
@@ -134,6 +135,48 @@ class HistorySource {
       final listToModel =
           listRes.map((element) => History.fromJson(element)).toList();
 
+      return listToModel;
+    }
+
+    return [];
+  }
+
+  // NOTE: SEARCH HISTORY
+  static Future<List<History>> historySearch(String idUser, String date) async {
+    String url = ApiApps.riwayatSearch;
+
+    Map? resHisSearch = await AppRequest.posts(url, {
+      "id_user": idUser,
+      "date": date,
+    });
+
+    if (resHisSearch == null) {
+      return [];
+    }
+
+    if (resHisSearch["success"]) {
+      List listHisSearch = resHisSearch["data"];
+      final listToModel =
+          listHisSearch.map((e) => History.fromJson(e)).toList();
+      return listToModel;
+    }
+
+    return [];
+  }
+
+  // NOTE: GET ALL HISTORY
+  static Future<List<History>> fetchAllHistory(String idUser) async {
+    String url = ApiApps.riwayat;
+
+    Map? resHistory = await AppRequest.posts(url, {"id_user": idUser});
+
+    if (resHistory == null) {
+      return [];
+    }
+
+    if (resHistory["success"]) {
+      List listHistory = resHistory["data"];
+      final listToModel = listHistory.map((e) => History.fromJson(e)).toList();
       return listToModel;
     }
 

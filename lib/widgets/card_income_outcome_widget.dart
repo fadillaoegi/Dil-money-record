@@ -1,17 +1,41 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:dilrecord_money/config/app_format_config.dart';
+import 'package:dilrecord_money/data/models/history.dart';
+import 'package:dilrecord_money/routes/routes.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CardInOutCome extends StatelessWidget {
-  CardInOutCome({
-    super.key,
-    this.date,
-    this.nominal,
-  });
+  CardInOutCome(
+      {super.key,
+      this.idUser,
+      this.date,
+      this.nominal,
+      this.type,
+      this.function,
+      this.history
+      // this.menu
+      });
+  String? idUser;
   String? date;
   String? nominal;
+  String? type;
+  Function? function;
+  History? history;
+
+  showOption(String value, History history) {
+    if (value == "update") {
+      Get.toNamed(RouteScreen.historyUpdate)?.then((value) {
+        if (value ?? false) {
+          function;
+        }
+      });
+    } else if (value == "delete") {
+      // Get.toNamed(RouteScreen.historyUpdate);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +75,9 @@ class CardInOutCome extends StatelessWidget {
           //       Icons.menu,
           //       size: 20.0,
           //     )),
-          PopupMenuButton(
+          PopupMenuButton<String>(
             itemBuilder: (context) => [],
-            onSelected: (value) {},
+            onSelected: (value) => showOption(value, history!),
           )
         ],
       ),

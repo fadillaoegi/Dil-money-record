@@ -13,12 +13,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class HistoryUpdateScreen extends StatelessWidget {
+class HistoryUpdateScreen extends StatefulWidget {
   HistoryUpdateScreen({super.key});
+
+  @override
+  State<HistoryUpdateScreen> createState() => _HistoryUpdateScreenState();
+}
+
+class _HistoryUpdateScreenState extends State<HistoryUpdateScreen> {
   final userController = Get.put(UserController());
+
   final updateController = Get.put(UpdateController());
+
   final TextEditingController sumberController = TextEditingController();
+
   final TextEditingController priceController = TextEditingController();
+
   final argumentHistory = Get.arguments;
 
   update() async {

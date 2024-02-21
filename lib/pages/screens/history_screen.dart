@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:dilrecord_money/pages/controllers/history/inOutcome_controller.dart';
+import 'package:dilrecord_money/pages/controllers/history/history_controller.dart';
 import 'package:dilrecord_money/pages/controllers/user_controller.dart';
 import 'package:dilrecord_money/data/models/history.dart';
 import 'package:dilrecord_money/themes/colors.dart';
@@ -21,13 +21,12 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
-  final inOutcomeController = Get.put(InOutcomeController());
+  final historyController = Get.put(HistoryController());
   final userController = Get.put(UserController());
   final searchController = TextEditingController();
-  final type = Get.arguments;
 
   refresh() {
-    inOutcomeController.getList(userController.data.id, type);
+    // historyController.getList(userController.data.id, type);
   }
 
   @override
@@ -38,13 +37,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(type);
     print(userController.data.id);
     return Scaffold(
       appBar: AppBar(
         title: Row(
           children: [
-            Text(type),
+            const Text("Riwayat"),
             Expanded(
                 child: Container(
               margin: const EdgeInsets.only(left: 8.0),
@@ -64,13 +62,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 decoration: InputDecoration(
                     hintText: "2024-02-14",
                     suffixIcon: InkWell(
-                      onTap: () {
-                        inOutcomeController.getSearch(
-                          userController.data.id,
-                          type,
-                          searchController.text,
-                        );
-                      },
+                      onTap: () {},
                       child: const Icon(
                         Icons.search,
                         color: Colors.white,
@@ -99,8 +91,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
         margin: const EdgeInsets.all(20.0),
-        child: GetBuilder<InOutcomeController>(
-          init: InOutcomeController(),
+        child: GetBuilder<HistoryController>(
+          init: HistoryController(),
           initState: (_) {},
           builder: (_) {
             if (_.loading) {

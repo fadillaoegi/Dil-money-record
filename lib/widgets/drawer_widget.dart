@@ -103,7 +103,7 @@ class DrawerWidget extends StatelessWidget {
                     onPress: () {
                       // Get.toNamed(RouteScreen.history);
                       Get.toNamed(
-                        RouteScreen.history,
+                        RouteScreen.inOutcome,
                         arguments: "Pemasukan",
                       );
                     },
@@ -116,7 +116,7 @@ class DrawerWidget extends StatelessWidget {
                     text: "Pengeluaran",
                     onPress: () {
                       Get.toNamed(
-                        RouteScreen.history,
+                        RouteScreen.inOutcome,
                         arguments: "Pengeluaran",
                       );
                     },
@@ -128,7 +128,9 @@ class DrawerWidget extends StatelessWidget {
                   MenuDrawer(
                     text: "Riwayat",
                     onPress: () {
-                      // Get.toNamed(RouteScreen.historyUpdate);
+                      Get.toNamed(
+                        RouteScreen.history,
+                      );
                     },
                     prefix: Icons.history,
                   ),
