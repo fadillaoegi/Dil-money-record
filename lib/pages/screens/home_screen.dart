@@ -118,7 +118,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           }),
                         ],
                       ),
-
                       // GREETING STATIS
                       // Column(
                       //   crossAxisAlignment: CrossAxisAlignment.start,
