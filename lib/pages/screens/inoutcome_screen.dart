@@ -2,7 +2,7 @@ import 'package:dilrecord_money/config/app_format_config.dart';
 import 'package:dilrecord_money/data/models/history.dart';
 import 'package:dilrecord_money/pages/controllers/history/inOutcome_controller.dart';
 import 'package:dilrecord_money/pages/controllers/user_controller.dart';
-import 'package:dilrecord_money/routes/routes.dart';
+import 'package:dilrecord_money/pages/screens/update_history_screen.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,11 +29,25 @@ class _InOutcomeScreenState extends State<InOutcomeScreen> {
 
   showOption(String value, History history) {
     if (value == "update") {
-      Get.toNamed(RouteScreen.historyUpdate)?.then((value) {
+      // NOTE: WITH PARAMETER
+      Get.to(HistoryUpdateScreen(
+        date: history.date!,
+        historyId: history.id!,
+      ))?.then((value) {
         if (value ?? false) {
           refresh();
         }
       });
+
+      // NOTE: WITH ARGUMENTS (ERROR)
+      // Get.toNamed(RouteScreen.historyUpdate, arguments: {
+      //   "date": history.date,
+      //   "historyid": history.id,
+      // })?.then((value) {
+      //   if (value ?? false) {
+      //     refresh();
+      //   }
+      // });
     } else if (value == "delete") {
       // Get.toNamed(RouteScreen.historyUpdate);
     }

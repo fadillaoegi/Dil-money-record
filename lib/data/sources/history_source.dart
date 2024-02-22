@@ -141,6 +141,27 @@ class HistorySource {
     return [];
   }
 
+  static Future<History?> wheredate(String userId, String date) async {
+    String url = ApiApps.whereDate;
+    Map<String, String> body = {
+      "id_user": userId,
+      "date": date,
+    };
+    Map? resWhereDate = await AppRequest.posts(url, body);
+
+    if (resWhereDate == null) {
+      return null;
+    }
+
+    if (resWhereDate["success"]) {
+      var data = resWhereDate["data"];
+      History dataToModel = History.fromJson(data);
+
+      return dataToModel;
+    }
+    return null;
+  }
+
   // NOTE: SEARCH HISTORY
   static Future<List<History>> historySearch(String idUser, String date) async {
     String url = ApiApps.riwayatSearch;

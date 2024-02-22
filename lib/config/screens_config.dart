@@ -6,7 +6,7 @@ import 'package:dilrecord_money/pages/screens/inoutcome_screen.dart';
 import 'package:dilrecord_money/pages/screens/login_screen.dart';
 import 'package:dilrecord_money/pages/screens/register_screen.dart';
 import 'package:dilrecord_money/pages/screens/splash_screen.dart';
-import 'package:dilrecord_money/pages/screens/update_history_screen.dart';
+// import 'package:dilrecord_money/pages/screens/update_history_screen.dart';
 import 'package:dilrecord_money/routes/routes.dart';
 import 'package:get/get.dart';
 
@@ -19,5 +19,5 @@ List<GetPage<dynamic>>? getScreens = [
   GetPage(name: RouteScreen.detail, page: () => const DetailScreen()),
   GetPage(name: RouteScreen.history, page: () => const HistoryScreen()),
   GetPage(name: RouteScreen.inOutcome, page: () => const InOutcomeScreen()),
-  GetPage(name: RouteScreen.historyUpdate, page: () => HistoryUpdateScreen()),
+  // GetPage(name: RouteScreen.historyUpdate, page: () =>  HistoryUpdateScreen()),
 ];

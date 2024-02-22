@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 import 'dart:convert';
 import 'package:dilrecord_money/config/app_format_config.dart';
-import 'package:dilrecord_money/pages/controllers/history/add_controller.dart';
 import 'package:dilrecord_money/pages/controllers/history/update_controller.dart';
 import 'package:dilrecord_money/pages/controllers/user_controller.dart';
 import 'package:dilrecord_money/data/sources/history_source.dart';
@@ -14,7 +13,13 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class HistoryUpdateScreen extends StatefulWidget {
-  HistoryUpdateScreen({super.key});
+  const HistoryUpdateScreen({
+    super.key,
+    required this.historyId,
+    required this.date,
+  });
+  final String historyId;
+  final String date;
 
   @override
   State<HistoryUpdateScreen> createState() => _HistoryUpdateScreenState();
@@ -29,12 +34,13 @@ class _HistoryUpdateScreenState extends State<HistoryUpdateScreen> {
 
   final TextEditingController priceController = TextEditingController();
 
-  final argumentHistory = Get.arguments;
+  // final argsFromHistory = Get.arguments as Map<String, dynamic>;
 
   update() async {
     bool success = await HistorySource.update(
-        userController.data.id!,
-        updateController.type,
+        // userController.data.id!,
+        widget.historyId,
+        updateController.date,
         updateController.type,
         jsonEncode(updateController.items),
         updateController.total.toString());
@@ -42,6 +48,14 @@ class _HistoryUpdateScreenState extends State<HistoryUpdateScreen> {
       //       Get.back(result: true);
       Get.snackbar("Update History", "Berhasil");
     }
+  }
+
+  @override
+  void initState() {
+    updateController.initUpdate(userController.data.id, widget.date);
+    // updateController.initUpdate(
+    //     userController.data.id, argsFromHistory["date"]);
+    super.initState();
   }
 
   @override
@@ -74,6 +88,7 @@ class _HistoryUpdateScreenState extends State<HistoryUpdateScreen> {
                           updateController.date,
                           style: black400.copyWith(fontSize: 20.0),
                         )),
+
                     // NOTE: TANGGAL STATIS
                     // Text(
                     //   "02/10/2024",
@@ -106,21 +121,25 @@ class _HistoryUpdateScreenState extends State<HistoryUpdateScreen> {
                     title: "Tipe",
                   ),
                 ),
+
                 // NOTE: TYPE DINAMIS
-                Obx(() => DropdownButtonFormField(
-                      decoration:
-                          const InputDecoration(border: OutlineInputBorder()),
-                      items: ["Pemasukan", "Pengeluaran"].map((e) {
-                        return DropdownMenuItem(
-                          value: e,
-                          child: Text(e),
-                        );
-                      }).toList(),
-                      value: updateController.type,
-                      onChanged: (value) {
-                        updateController.setType(value);
-                      },
-                    )),
+                Obx(() {
+                  return DropdownButtonFormField(
+                    value: updateController.type,
+                    items: ["Pemasukan", "Pengeluaran"].map((e) {
+                      return DropdownMenuItem(
+                        value: e,
+                        child: Text(e),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      updateController.setType(value);
+                    },
+                    decoration:
+                        const InputDecoration(border: OutlineInputBorder()),
+                  );
+                }),
+
                 // NOTE: TYPE STATIS
                 // DropdownButtonFormField(
                 //   decoration:
@@ -134,6 +153,7 @@ class _HistoryUpdateScreenState extends State<HistoryUpdateScreen> {
                 //   onChanged: (value) {},
                 //   value: "Pemasukan",
                 // ),
+
                 // NOTE: SUMBER
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -147,6 +167,7 @@ class _HistoryUpdateScreenState extends State<HistoryUpdateScreen> {
                       hintText: "MacBook",
                       border: OutlineInputBorder(borderSide: BorderSide())),
                 ),
+
                 // NOTE: HARGA/NOMINAL
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -193,8 +214,8 @@ class _HistoryUpdateScreenState extends State<HistoryUpdateScreen> {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(12.0)),
                       border: Border.all(color: ColorApps.primary)),
-                  child: GetBuilder<AddController>(
-                    init: AddController(),
+                  child: GetBuilder<UpdateController>(
+                    init: UpdateController(),
                     initState: (_) {},
                     builder: (_) {
                       // NOTE: ITEMS DINAMIS
@@ -210,6 +231,7 @@ class _HistoryUpdateScreenState extends State<HistoryUpdateScreen> {
                                   updateController.deleteItem(index),
                             );
                           })
+
                           // NOTE: ITEMS STATIS
                           // [
                           //   Chip(
