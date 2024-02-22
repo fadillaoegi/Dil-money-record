@@ -272,7 +272,7 @@ class _HistoryUpdateScreenState extends State<HistoryUpdateScreen> {
                 ),
                 ButtonWidget(
                   // onPress: () => addHistory(),
-                  onPress: () {},
+                  onPress: () => update(),
                   text: "Submit",
                 )
               ],
