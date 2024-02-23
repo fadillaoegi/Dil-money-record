@@ -68,215 +68,208 @@ class _HistoryUpdateScreenState extends State<HistoryUpdateScreen> {
           margin: const EdgeInsets.all(20.0),
           width: MediaQuery.sizeOf(context).width,
           height: MediaQuery.sizeOf(context).height,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                // NOTE: TANGGAL
-                SectionTitle(
-                  title: "Tanggal",
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Row(
-                  children: [
-                    // NOTE: TANGGAL DINAMIS
-                    Obx(() => Text(
-                          // "02/10/2024",
-                          updateController.date,
-                          style: black400.copyWith(fontSize: 20.0),
-                        )),
+          child: ListView(
+            children: [
+              // NOTE: TANGGAL
+              SectionTitle(
+                title: "Tanggal",
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                children: [
+                  // NOTE: TANGGAL DINAMIS
+                  Obx(() => Text(
+                        // "02/10/2024",
+                        updateController.date,
+                        style: black400.copyWith(fontSize: 20.0),
+                      )),
 
-                    // NOTE: TANGGAL STATIS
-                    // Text(
-                    //   "02/10/2024",
-                    //   style: black400.copyWith(fontSize: 20.0),
-                    // ),
+                  // NOTE: TANGGAL STATIS
+                  // Text(
+                  //   "02/10/2024",
+                  //   style: black400.copyWith(fontSize: 20.0),
+                  // ),
+                  const SizedBox(
+                    width: 20.0,
+                  ),
+                  IconButton(
+                      iconSize: 40.0,
+                      color: ColorApps.primary,
+                      onPressed: () async {
+                        var resultDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(2024, 01, 01),
+                            lastDate: DateTime(DateTime.now().year + 1));
+                        if (resultDate != null) {
+                          updateController.setDate(
+                              DateFormat("yyy-MM-dd").format(resultDate));
+                        }
+                      },
+                      icon: const Icon(Icons.date_range)),
+                ],
+              ),
+              // NOTE: TYPE
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: SectionTitle(
+                  title: "Tipe",
+                ),
+              ),
+
+              // NOTE: TYPE DINAMIS
+              Obx(() {
+                return DropdownButtonFormField(
+                  value: updateController.type,
+                  items: ["Pemasukan", "Pengeluaran"].map((e) {
+                    return DropdownMenuItem(
+                      value: e,
+                      child: Text(e),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    updateController.setType(value);
+                  },
+                  decoration:
+                      const InputDecoration(border: OutlineInputBorder()),
+                );
+              }),
+
+              // NOTE: TYPE STATIS
+              // DropdownButtonFormField(
+              //   decoration:
+              //       const InputDecoration(border: OutlineInputBorder()),
+              //   items: ["Pemasukan", "Pengeluaran"].map((e) {
+              //     return DropdownMenuItem(
+              //       value: e,
+              //       child: Text(e),
+              //     );
+              //   }).toList(),
+              //   onChanged: (value) {},
+              //   value: "Pemasukan",
+              // ),
+
+              // NOTE: SUMBER
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: SectionTitle(
+                  title: "Sumber/Objek pengeluaran",
+                ),
+              ),
+              TextFormField(
+                controller: sumberController,
+                decoration: const InputDecoration(
+                    hintText: "MacBook",
+                    border: OutlineInputBorder(borderSide: BorderSide())),
+              ),
+
+              // NOTE: HARGA/NOMINAL
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: SectionTitle(
+                  title: "Harga/Nominal",
+                ),
+              ),
+              TextFormField(
+                keyboardType: TextInputType.number,
+                controller: priceController,
+                decoration: InputDecoration(
+                    hintText: "3000000",
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: ColorApps.primary))),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: ButtonWidget(
+                  onPress: () {
+                    updateController.addItem({
+                      "sumber": sumberController.text,
+                      "price": priceController.text
+                    });
+                    sumberController.clear();
+                    priceController.clear();
+                  },
+                  text: "Add item",
+                ),
+              ),
+
+              // NOTE: ITEMS
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: SectionTitle(
+                  title: "Items",
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 20.0),
+                padding: const EdgeInsets.all(20.0),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(12.0)),
+                    border: Border.all(color: ColorApps.primary)),
+                child: GetBuilder<UpdateController>(
+                  init: UpdateController(),
+                  initState: (_) {},
+                  builder: (_) {
+                    // NOTE: ITEMS DINAMIS
+                    return Wrap(
+                        runSpacing: 10.0,
+                        spacing: 10.0,
+                        children: List.generate(_.items.length, (index) {
+                          return Chip(
+                            padding: const EdgeInsets.only(right: 10.0),
+                            label: Text(_.items[index]["sumber"]),
+                            deleteIcon: const Icon(Icons.clear),
+                            onDeleted: () => updateController.deleteItem(index),
+                          );
+                        })
+
+                        // NOTE: ITEMS STATIS
+                        // [
+                        //   Chip(
+                        //     padding: const EdgeInsets.only(right: 10.0),
+                        //     label: const Text("Sumber"),
+                        //     deleteIcon: const Icon(Icons.clear),
+                        //     onDeleted: () {},
+                        //   ),
+                        // ],
+                        );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: Row(
+                  children: [
+                    SectionTitle(
+                      title: "Total",
+                    ),
                     const SizedBox(
                       width: 20.0,
                     ),
-                    IconButton(
-                        iconSize: 40.0,
-                        color: ColorApps.primary,
-                        onPressed: () async {
-                          var resultDate = await showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(2024, 01, 01),
-                              lastDate: DateTime(DateTime.now().year + 1));
-                          if (resultDate != null) {
-                            updateController.setDate(
-                                DateFormat("yyy-MM-dd").format(resultDate));
-                          }
-                        },
-                        icon: const Icon(Icons.date_range)),
+                    // NOTE: TOTAL DINAMIS
+                    Obx(() => Text(
+                          // AppFormat.currency("300000"),
+                          AppFormat.currency(updateController.total.toString()),
+                          style: primary700.copyWith(fontSize: 28.0),
+                        )),
+                    // NOTE: TOTAL STATIS
+                    // Text(
+                    //   "Rp. 300.000,00",
+                    //   style: primary700.copyWith(fontSize: 28.0),
+                    // ),
                   ],
                 ),
-                // NOTE: TYPE
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: SectionTitle(
-                    title: "Tipe",
-                  ),
-                ),
-
-                // NOTE: TYPE DINAMIS
-                Obx(() {
-                  return DropdownButtonFormField(
-                    value: updateController.type,
-                    items: ["Pemasukan", "Pengeluaran"].map((e) {
-                      return DropdownMenuItem(
-                        value: e,
-                        child: Text(e),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      updateController.setType(value);
-                    },
-                    decoration:
-                        const InputDecoration(border: OutlineInputBorder()),
-                  );
-                }),
-
-                // NOTE: TYPE STATIS
-                // DropdownButtonFormField(
-                //   decoration:
-                //       const InputDecoration(border: OutlineInputBorder()),
-                //   items: ["Pemasukan", "Pengeluaran"].map((e) {
-                //     return DropdownMenuItem(
-                //       value: e,
-                //       child: Text(e),
-                //     );
-                //   }).toList(),
-                //   onChanged: (value) {},
-                //   value: "Pemasukan",
-                // ),
-
-                // NOTE: SUMBER
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: SectionTitle(
-                    title: "Sumber/Objek pengeluaran",
-                  ),
-                ),
-                TextFormField(
-                  controller: sumberController,
-                  decoration: const InputDecoration(
-                      hintText: "MacBook",
-                      border: OutlineInputBorder(borderSide: BorderSide())),
-                ),
-
-                // NOTE: HARGA/NOMINAL
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: SectionTitle(
-                    title: "Harga/Nominal",
-                  ),
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  controller: priceController,
-                  decoration: InputDecoration(
-                      hintText: "3000000",
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: ColorApps.primary))),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: ButtonWidget(
-                    onPress: () {
-                      updateController.addItem({
-                        "sumber": sumberController.text,
-                        "price": priceController.text
-                      });
-                      sumberController.clear();
-                      priceController.clear();
-                    },
-                    text: "Add item",
-                  ),
-                ),
-
-                // NOTE: ITEMS
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: SectionTitle(
-                    title: "Items",
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.only(bottom: 20.0),
-                  padding: const EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(12.0)),
-                      border: Border.all(color: ColorApps.primary)),
-                  child: GetBuilder<UpdateController>(
-                    init: UpdateController(),
-                    initState: (_) {},
-                    builder: (_) {
-                      // NOTE: ITEMS DINAMIS
-                      return Wrap(
-                          runSpacing: 10.0,
-                          spacing: 10.0,
-                          children: List.generate(_.items.length, (index) {
-                            return Chip(
-                              padding: const EdgeInsets.only(right: 10.0),
-                              label: Text(_.items[index]["sumber"]),
-                              deleteIcon: const Icon(Icons.clear),
-                              onDeleted: () =>
-                                  updateController.deleteItem(index),
-                            );
-                          })
-
-                          // NOTE: ITEMS STATIS
-                          // [
-                          //   Chip(
-                          //     padding: const EdgeInsets.only(right: 10.0),
-                          //     label: const Text("Sumber"),
-                          //     deleteIcon: const Icon(Icons.clear),
-                          //     onDeleted: () {},
-                          //   ),
-                          // ],
-                          );
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: Row(
-                    children: [
-                      SectionTitle(
-                        title: "Total",
-                      ),
-                      const SizedBox(
-                        width: 20.0,
-                      ),
-                      // NOTE: TOTAL DINAMIS
-                      Obx(() => Text(
-                            // AppFormat.currency("300000"),
-                            AppFormat.currency(
-                                updateController.total.toString()),
-                            style: primary700.copyWith(fontSize: 28.0),
-                          )),
-                      // NOTE: TOTAL STATIS
-                      // Text(
-                      //   "Rp. 300.000,00",
-                      //   style: primary700.copyWith(fontSize: 28.0),
-                      // ),
-                    ],
-                  ),
-                ),
-                ButtonWidget(
-                  // onPress: () => addHistory(),
-                  onPress: () => update(),
-                  text: "Submit",
-                )
-              ],
-            ),
+              ),
+              ButtonWidget(
+                // onPress: () => addHistory(),
+                onPress: () => update(),
+                text: "Submit",
+              )
+            ],
           )),
     );
   }

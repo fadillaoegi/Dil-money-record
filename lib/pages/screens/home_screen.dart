@@ -23,20 +23,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final UserController userController = Get.put(UserController());
-  final HomeController homeController = Get.put(HomeController());
+  final userController = Get.put(UserController());
+  final homeController = Get.put(HomeController());
 
-  refresh() {
+  refresh() async {
     homeController.getAnalysis(userController.data.id!);
     // print(userController.data.id!);
   }
 
   @override
   void initState() {
+    homeController.getAnalysis(userController.data.id!);
     super.initState();
-    refresh();
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     // DATAPENGELUARAN MINGGUAN DINAMIS
@@ -81,11 +81,10 @@ class _HomeScreenState extends State<HomeScreen> {
         width: MediaQuery.sizeOf(context).width,
         margin: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
         padding: const EdgeInsets.only(top: 20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        child: RefreshIndicator(
+          onRefresh: () => refresh(),
+          child: ListView(
             children: [
-              // HEADER
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -197,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     arcWidth: 30,
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ),

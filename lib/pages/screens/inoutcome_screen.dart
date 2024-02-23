@@ -23,7 +23,7 @@ class _InOutcomeScreenState extends State<InOutcomeScreen> {
   final searchController = TextEditingController();
   final type = Get.arguments;
 
-  refresh() {
+  refresh() async {
     inOutcomeController.getList(userController.data.id, type);
   }
 
