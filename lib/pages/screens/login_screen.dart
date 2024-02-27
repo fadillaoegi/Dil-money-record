@@ -52,6 +52,8 @@ class _LoginScreenState extends State<LoginScreen> {
             } else {
               Get.snackbar("Login", "Gagal");
             }
+            email.trim();
+            password.trim();
           }
         } else if (email.isEmpty) {
           Get.snackbar("$warning", "Email tidak boleh ksosong");
