@@ -1,4 +1,4 @@
-import 'package:dilrecord_money/data/sources/history_source.dart';
+import 'package:dilrecord_money/module/data/sources/history_source.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {

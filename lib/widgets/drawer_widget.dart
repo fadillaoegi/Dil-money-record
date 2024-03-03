@@ -1,7 +1,7 @@
 import 'package:dilrecord_money/config/assets_localate.dart';
 import 'package:dilrecord_money/config/session.dart';
-import 'package:dilrecord_money/pages/controllers/home_controller.dart';
-import 'package:dilrecord_money/pages/controllers/user_controller.dart';
+import 'package:dilrecord_money/module/pages/controllers/home_controller.dart';
+import 'package:dilrecord_money/module/pages/controllers/user_controller.dart';
 import 'package:dilrecord_money/routes/routes.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';

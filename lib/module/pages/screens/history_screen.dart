@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
 
-import 'package:dilrecord_money/pages/controllers/history/history_controller.dart';
-import 'package:dilrecord_money/pages/controllers/user_controller.dart';
-import 'package:dilrecord_money/data/models/history.dart';
+import 'package:dilrecord_money/module/data/models/history.dart';
+import 'package:dilrecord_money/module/pages/controllers/history/history_controller.dart';
+import 'package:dilrecord_money/module/pages/controllers/user_controller.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:dilrecord_money/widgets/card_income_outcome_widget.dart';

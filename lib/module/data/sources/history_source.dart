@@ -1,7 +1,7 @@
 // ignore_for_file: curly_braces_in_flow_control_structures, avoid_print, unnecessary_string_interpolations
 import 'package:dilrecord_money/config/apis.dart';
 import 'package:dilrecord_money/config/app_request_config.dart';
-import 'package:dilrecord_money/data/models/history.dart';
+import 'package:dilrecord_money/module/data/models/history.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 

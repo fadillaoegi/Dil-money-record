@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
-import 'package:dilrecord_money/pages/controllers/user_controller.dart';
-import 'package:dilrecord_money/data/models/user.dart';
+import 'package:dilrecord_money/module/data/models/user.dart';
+import 'package:dilrecord_money/module/pages/controllers/user_controller.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

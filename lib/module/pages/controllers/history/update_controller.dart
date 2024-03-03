@@ -1,8 +1,7 @@
 // ignore_for_file: invalid_use_of_protected_member
 import 'dart:convert';
-
-import 'package:dilrecord_money/data/models/history.dart';
-import 'package:dilrecord_money/data/sources/history_source.dart';
+import 'package:dilrecord_money/module/data/models/history.dart';
+import 'package:dilrecord_money/module/data/sources/history_source.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 

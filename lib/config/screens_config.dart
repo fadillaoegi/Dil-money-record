@@ -1,12 +1,11 @@
-import 'package:dilrecord_money/pages/screens/add_history_screen.dart';
-import 'package:dilrecord_money/pages/screens/detail_screen.dart';
-import 'package:dilrecord_money/pages/screens/history_screen.dart';
-import 'package:dilrecord_money/pages/screens/home_screen.dart';
-import 'package:dilrecord_money/pages/screens/inoutcome_screen.dart';
-import 'package:dilrecord_money/pages/screens/login_screen.dart';
-import 'package:dilrecord_money/pages/screens/register_screen.dart';
-import 'package:dilrecord_money/pages/screens/splash_screen.dart';
-// import 'package:dilrecord_money/pages/screens/update_history_screen.dart';
+import 'package:dilrecord_money/module/pages/screens/add_history_screen.dart';
+import 'package:dilrecord_money/module/pages/screens/detail_screen.dart';
+import 'package:dilrecord_money/module/pages/screens/history_screen.dart';
+import 'package:dilrecord_money/module/pages/screens/home_screen.dart';
+import 'package:dilrecord_money/module/pages/screens/inoutcome_screen.dart';
+import 'package:dilrecord_money/module/pages/screens/login_screen.dart';
+import 'package:dilrecord_money/module/pages/screens/register_screen.dart';
+import 'package:dilrecord_money/module/pages/screens/splash_screen.dart';
 import 'package:dilrecord_money/routes/routes.dart';
 import 'package:get/get.dart';
 

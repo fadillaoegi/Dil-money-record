@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:dilrecord_money/config/app_format_config.dart';
-import 'package:dilrecord_money/data/models/history.dart';
+import 'package:dilrecord_money/module/data/models/history.dart';
 import 'package:dilrecord_money/routes/routes.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:flutter/material.dart';

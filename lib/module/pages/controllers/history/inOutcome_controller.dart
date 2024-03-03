@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, invalid_use_of_protected_member
-import 'package:dilrecord_money/data/models/history.dart';
-import 'package:dilrecord_money/data/sources/history_source.dart';
+
+import 'package:dilrecord_money/module/data/models/history.dart';
+import 'package:dilrecord_money/module/data/sources/history_source.dart';
 import 'package:get/get.dart';
 
 class InOutcomeController extends GetxController {

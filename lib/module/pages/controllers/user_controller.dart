@@ -1,4 +1,4 @@
-import 'package:dilrecord_money/data/models/user.dart';
+import 'package:dilrecord_money/module/data/models/user.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController {

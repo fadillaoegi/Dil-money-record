@@ -3,7 +3,7 @@
 import 'package:dilrecord_money/config/apis.dart';
 import 'package:dilrecord_money/config/app_request_config.dart';
 import 'package:dilrecord_money/config/session.dart';
-import 'package:dilrecord_money/data/models/user.dart';
+import 'package:dilrecord_money/module/data/models/user.dart';
 import 'package:get/get.dart';
 
 class UserSource {

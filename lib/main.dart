@@ -1,9 +1,9 @@
 // ignore_for_file: avoid_print
 import 'package:dilrecord_money/config/screens_config.dart';
 import 'package:dilrecord_money/config/session.dart';
-import 'package:dilrecord_money/data/models/user.dart';
-import 'package:dilrecord_money/pages/screens/home_screen.dart';
-import 'package:dilrecord_money/pages/screens/login_screen.dart';
+import 'package:dilrecord_money/module/data/models/user.dart';
+import 'package:dilrecord_money/module/pages/screens/home_screen.dart';
+import 'package:dilrecord_money/module/pages/screens/login_screen.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

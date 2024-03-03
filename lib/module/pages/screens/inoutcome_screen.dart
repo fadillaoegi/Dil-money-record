@@ -1,8 +1,8 @@
 import 'package:dilrecord_money/config/app_format_config.dart';
-import 'package:dilrecord_money/data/models/history.dart';
-import 'package:dilrecord_money/pages/controllers/history/inOutcome_controller.dart';
-import 'package:dilrecord_money/pages/controllers/user_controller.dart';
-import 'package:dilrecord_money/pages/screens/update_history_screen.dart';
+import 'package:dilrecord_money/module/data/models/history.dart';
+import 'package:dilrecord_money/module/pages/controllers/history/inOutcome_controller.dart';
+import 'package:dilrecord_money/module/pages/controllers/user_controller.dart';
+import 'package:dilrecord_money/module/pages/screens/update_history_screen.dart';
 import 'package:dilrecord_money/themes/colors.dart';
 import 'package:dilrecord_money/themes/fonts.dart';
 import 'package:flutter/cupertino.dart';
