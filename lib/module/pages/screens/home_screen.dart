@@ -1,5 +1,6 @@
-import 'package:d_chart/commons/config_render.dart';
-import 'package:d_chart/commons/data_model.dart';
+
+import 'package:d_chart/commons/config_render/config_render.dart';
+import 'package:d_chart/commons/data_model/data_model.dart';
 import 'package:d_chart/ordinal/bar.dart';
 import 'package:d_chart/ordinal/pie.dart';
 import 'package:dilrecord_money/config/app_format_config.dart';
